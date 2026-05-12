@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #fdfbf8;
+  --ink: #35324f;
+  --brand: #2f5bff;
+  /* When Reckless .woff2 files are added in /public/fonts, swap the display variable
+     in src/app/layout.tsx to use a local @font-face Reckless. */
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Marker / dirty-ink effect for display headings. References the SVG
+   filter defined in app/layout.tsx so the text gets a stippled,
+   textured edge — what the Figma source achieves through the actual
+   Reckless face in its uppercase weight. */
+.text-grain {
+  filter: url(#grain);
+}
+
+/* Hide native scrollbars on overflow rows while keeping scroll usability */
+.no-scrollbar {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge legacy */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;                  /* WebKit */
+}
+
+/* Soft fade-in for case-study body images. Pairs with `decoding="async"`
+   on the <img> so the animation starts on first paint. */
+.cs-image-fade {
+  animation: cs-image-fade 500ms ease-out both;
+}
+@keyframes cs-image-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Case-study card cursor-following hover affordance.
+   On hover-capable devices we hide the native cursor inside the card so
+   the floating "View Case Study →" pill becomes the apparent cursor.
+   On touch devices we keep the cursor normal and show a static corner
+   chip (`.touch-pill`) instead. */
+@media (hover: hover) and (pointer: fine) {
+  .cs-card-link { cursor: none; }
+}
+@media (hover: none) {
+  .cs-card-link .hover-pill { display: none; }
+  .cs-card-link .touch-pill { display: inline-block; }
+}
+
+/* Polaroid gentle idle wobble — a barely-perceptible breathing effect
+   so the sticky photo frame feels alive without being distracting. */
+.polaroid-wobble {
+  animation: polaroid-wobble 6s ease-in-out infinite alternate;
+  transform-origin: 50% 0%;
+}
+@keyframes polaroid-wobble {
+  from { transform: rotate(2deg)   translateY(0); }
+  to   { transform: rotate(4deg)   translateY(-3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .polaroid-wobble { animation: none; }
+}
+
+/* Page-level entrance. Applied to <main> on every route via
+   `globals.css`-driven class so the first paint feels intentional. */
+.page-enter {
+  animation: page-enter 350ms ease-out both;
+}
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-enter { animation: none; }
+}
+
+/* Reusable underline-grow utility for nav links. */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease-out;
+}
+.nav-underline:hover::after,
+.nav-underline[data-active='true']::after { transform: scaleX(1); }
+
+/* Auto-scrolling marquee. Wrap a `w-max` flex row containing the items
+   duplicated twice; the -50% transform cycles seamlessly. Hovering the
+   row pauses the animation. */
+.marquee-track {
+  animation: marquee linear infinite;
+  animation-duration: var(--marquee-duration, 40s);
+  will-change: transform;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* Reckless placeholder note — when font files arrive, define here: */
+@font-face {
+  font-family: 'Reckless';
+  src: url('/fonts/Reckless-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
