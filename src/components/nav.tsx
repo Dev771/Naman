@@ -6,8 +6,11 @@ import { Logo } from './logo';
 
 /**
  * Top Bar — Figma node 479:2453 (desktop) / 479:3094 (mobile).
- * Logo on the left, only "Selected Work" and "About me" on the right.
- * No "Home", no "Resume" button. Inactive: #979785, active: #35324f. Inter Medium 16/24.
+ *
+ * Scrolls naturally with the page — no fixed positioning.
+ * Transparent gradient background blends seamlessly with the hero image
+ * directly beneath it. Logo anchors left; nav links are absolutely centred
+ * in the bar for a balanced, studio-site feel.
  */
 const links = [
   { href: '/work', label: 'Selected Work' },
@@ -16,14 +19,19 @@ const links = [
 
 export function Nav() {
   const path = usePathname();
+
   return (
-    <header className="w-full bg-cream">
-      <div className="flex w-full items-center justify-between px-4 py-[10px] md:px-20">
-        <Link href="/" aria-label="Naman home" className="block">
-          <Logo size={48} />
+    <header className="relative z-20 w-full bg-transparent">
+      <div className="relative mx-auto flex h-[72px] w-full max-w-page items-center px-4 md:px-0">
+
+        {/* Logo — left anchor */}
+        <Link href="/" aria-label="Naman home" className="block shrink-0">
+          <Logo size={44} />
         </Link>
-        <nav>
-          <ul className="flex h-[60px] items-center gap-[10px] font-sans text-[16px] font-medium leading-[24px] md:gap-10">
+
+        {/* Nav links — absolutely centred in the bar */}
+        <nav className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <ul className="pointer-events-auto flex items-center gap-8 font-sans text-[15px] font-medium leading-[24px] md:gap-10 md:text-[16px]">
             {links.map((l) => {
               const isActive = path === l.href || path?.startsWith(`${l.href}/`);
               return (
@@ -31,7 +39,7 @@ export function Nav() {
                   <Link
                     href={l.href}
                     data-active={isActive ? 'true' : 'false'}
-                    className={`nav-underline transition-colors hover:text-ink ${
+                    className={`nav-underline transition-colors duration-200 hover:text-ink ${
                       isActive ? 'text-ink' : 'text-nav-inactive'
                     }`}
                   >
@@ -42,6 +50,7 @@ export function Nav() {
             })}
           </ul>
         </nav>
+
       </div>
     </header>
   );

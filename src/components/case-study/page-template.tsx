@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { SmartImage } from '@/components/smart-image';
 import { CaseStudyToc } from './case-study-toc';
 import { Blocks } from './case-study-blocks';
@@ -43,17 +42,8 @@ export function CaseStudyTemplate({ cs }: { cs: CaseStudy }) {
       </div>
 
       <div className="mx-auto w-full max-w-page px-4 md:px-0">
-        <div className="mb-8 md:mb-10">
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-1 font-sans text-[16px] leading-[24px] text-ink hover:opacity-70"
-          >
-            <BackArrow /> Back
-          </Link>
-        </div>
-
         <div className="flex gap-10 md:gap-16 lg:gap-24">
-          <CaseStudyToc items={tocItems} />
+          <CaseStudyToc items={tocItems} title={cs.title} />
 
           <article className="flex min-w-0 flex-1 flex-col gap-10 md:gap-12">
             {/* TL;DR section */}
@@ -151,13 +141,5 @@ function Pair({ label, value }: { label: string; value: string }) {
       <dt className="text-[12px] leading-[18px] uppercase text-ink">{label}</dt>
       <dd className="text-[16px] leading-[24px] text-ink">{value}</dd>
     </div>
-  );
-}
-
-function BackArrow() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13l-5 5 5 5v-3h6v-4h-6V7z" />
-    </svg>
   );
 }

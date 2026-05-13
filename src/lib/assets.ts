@@ -111,6 +111,9 @@ export const home = {
   // brand icons (Figma, Notion, Slack, Photoshop, etc.) when assets land.
   toolsCount: 5,
 
+  // Full-bleed hero section background image (Gemini-generated illustration).
+  heroBg: C('image/upload/v1778659836/Gemini_Generated_Image_opjmt2opjmt2opjm_1_1_o7okdz.png'),
+
   // Floating hero video from CSV (separate from the polaroid). Currently
   // unused on the page — kept here in case the user wants it as a section.
   heroVideo: C('video/upload/v1777222382/Hero_mcaqpg.mp4'),

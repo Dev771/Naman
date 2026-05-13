@@ -1,6 +1,7 @@
 'use client';
 
 import { home } from '@/lib/assets';
+import { useHomeContext } from './home-context';
 
 /**
  * Polaroid video frame — Figma node 479:2769.
@@ -62,11 +63,17 @@ export function PhotoFrame() {
  * Pinned to the top-right of the viewport from page load — stays
  * visible while scrolling. Hidden on mobile (Figma 479:3093 has no
  * polaroid slot on the mobile homepage).
+ *
+ * Fades out when any tracked section (WorkCards, Experience,
+ * Education, SideProject) is hovered.
  */
 export function StickyPhotoFrame() {
+  const { sectionHovered } = useHomeContext();
   return (
     <div
-      className="pointer-events-none fixed right-6 top-24 z-30 hidden md:block lg:right-10 xl:right-20"
+      className={`pointer-events-none fixed bottom-6 right-6 z-30 hidden transition-opacity duration-300 md:block lg:right-10 xl:right-20 ${
+        sectionHovered ? 'opacity-0' : 'opacity-100'
+      }`}
       aria-hidden="true"
     >
       <div className="pointer-events-auto">

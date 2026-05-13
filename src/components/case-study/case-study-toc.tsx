@@ -1,16 +1,26 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 /**
- * Sticky table of contents — left rail of the case study layout.
- * Lists every section in order; the section currently in view is
- * highlighted. Clicking jumps to that section's `id`.
+ * Sticky sidebar for case study pages.
  *
- * Hidden on mobile (Figma `462:6223` doesn't include a TOC) — appears
- * from `md:` upwards as the left column of the case-study reading view.
+ * Contains three vertically-stacked zones:
+ *   1. Back button  — always visible, navigates to /work
+ *   2. Project title — quick context anchor while deep in the article
+ *   3. "On this page" TOC — highlights the current section as you scroll
+ *
+ * The whole aside sticks to `top-8` so it sits comfortably below the
+ * in-flow navbar on scroll. Hidden on mobile (no sidebar in mobile Figma).
  */
-export function CaseStudyToc({ items }: { items: { id: string; label: string }[] }) {
+export function CaseStudyToc({
+  items,
+  title,
+}: {
+  items: { id: string; label: string }[];
+  title: string;
+}) {
   const [activeId, setActiveId] = useState<string>(items[0]?.id ?? '');
 
   useEffect(() => {
@@ -29,7 +39,6 @@ export function CaseStudyToc({ items }: { items: { id: string; label: string }[]
           setActiveId(visible[0].target.id);
         }
       },
-      // Activate when a section's top crosses ~25% from the top of the viewport.
       { rootMargin: '-25% 0px -65% 0px', threshold: [0, 0.25, 0.5] }
     );
 
@@ -38,7 +47,26 @@ export function CaseStudyToc({ items }: { items: { id: string; label: string }[]
   }, [items]);
 
   return (
-    <aside className="sticky top-24 hidden h-fit shrink-0 md:block md:w-[200px] lg:w-[240px]">
+    <aside className="sticky top-8 hidden h-fit shrink-0 md:block md:w-[200px] lg:w-[240px]">
+
+      {/* ── Back button ── */}
+      <Link
+        href="/work"
+        className="mb-5 inline-flex items-center gap-1.5 font-sans text-[14px] leading-[20px] text-ink-subtle transition-colors hover:text-ink"
+      >
+        <BackArrow />
+        Back
+      </Link>
+
+      {/* ── Project title ── */}
+      <h2 className="mb-6 font-sans text-[24px] font-semibold leading-[1.35] tracking-[-0.2px] text-ink">
+        {title}
+      </h2>
+
+      {/* ── Divider ── */}
+      <div className="mb-4 h-px w-full bg-ink/[0.08]" aria-hidden="true" />
+
+      {/* ── On this page ── */}
       <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.06em] text-ink-subtle">
         On this page
       </p>
@@ -50,7 +78,7 @@ export function CaseStudyToc({ items }: { items: { id: string; label: string }[]
               <li key={it.id} className="relative">
                 <a
                   href={`#${it.id}`}
-                  className={`block py-1 pl-4 font-sans text-[14px] leading-[20px] transition-colors ${
+                  className={`block py-1 pl-4 font-sans text-[13px] leading-[20px] transition-colors ${
                     isActive ? 'text-ink' : 'text-ink-subtle hover:text-ink'
                   }`}
                 >
@@ -59,7 +87,7 @@ export function CaseStudyToc({ items }: { items: { id: string; label: string }[]
                 {isActive && (
                   <span
                     aria-hidden="true"
-                    className="absolute left-[-1px] top-1 h-[20px] w-[2px] bg-blue-500"
+                    className="absolute left-[-1px] top-1 h-[20px] w-[2px] rounded-full bg-blue-500"
                   />
                 )}
               </li>
@@ -70,3 +98,13 @@ export function CaseStudyToc({ items }: { items: { id: string; label: string }[]
     </aside>
   );
 }
+
+function BackArrow() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M19 12H5" />
+      <path d="M12 5l-7 7 7 7" />
+    </svg>
+  );
+}
+

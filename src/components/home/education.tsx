@@ -15,7 +15,7 @@ export function Education() {
         {home.education.map((school) => (
           <li
             key={school.name}
-            className="-mx-2 flex items-center gap-4 rounded-md border-b border-blue-500/20 px-2 py-4 transition-colors hover:bg-blue-500/[0.03]"
+            className="-mx-2 flex items-center gap-4 border-b border-blue-500/20 px-2 py-4 transition-colors hover:bg-blue-500/[0.03]"
           >
             <RowIcon src={school.logo} alt={school.fullName} />
             <div className="flex flex-1 flex-wrap items-center justify-between gap-x-8 gap-y-1">

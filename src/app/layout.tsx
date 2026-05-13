@@ -3,6 +3,7 @@ import { inter, display, script, instrumentSerif, playfair } from './fonts';
 import './globals.css';
 import { Nav } from '@/components/nav';
 import { Footer } from '@/components/footer';
+import { HomeProvider } from '@/components/home/home-context';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://namanbhateja.com'),
@@ -43,9 +44,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </filter>
           </defs>
         </svg>
-        <Nav />
-        {children}
-        <Footer />
+        <HomeProvider>
+          <Nav />
+          {children}
+          <Footer />
+        </HomeProvider>
       </body>
     </html>
   );

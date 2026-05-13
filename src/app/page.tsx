@@ -3,7 +3,6 @@ import { WorkCards } from '@/components/home/work-cards';
 import { Experience } from '@/components/home/experience';
 import { Education } from '@/components/home/education';
 import { SideProject } from '@/components/home/side-project';
-import { Tools } from '@/components/home/tools';
 import { StickyPhotoFrame } from '@/components/home/photo-frame';
 import { Reveal } from '@/components/reveal';
 
@@ -16,8 +15,9 @@ export default function HomePage() {
         <Reveal><Experience /></Reveal>
         <Reveal><Education /></Reveal>
         <Reveal><SideProject /></Reveal>
-        <Reveal><Tools /></Reveal>
       </main>
+      {/* Only renders on the homepage — StickyPhotoFrame reacts to HomeContext
+          which is now provided by layout.tsx, so footer hover works too. */}
       <StickyPhotoFrame />
     </>
   );

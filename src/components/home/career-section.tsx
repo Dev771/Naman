@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
+import { SectionHoverWrapper } from './section-hover-wrapper';
 
 /**
  * Generic Career Section wrapper — matches Figma's repeating
@@ -32,7 +33,9 @@ export function CareerSection({
           </p>
         )}
       </header>
-      <div className="px-4 md:px-0">{children}</div>
+      <SectionHoverWrapper>
+        <div className="px-4 md:px-0">{children}</div>
+      </SectionHoverWrapper>
     </section>
   );
 }
@@ -47,11 +50,11 @@ export function CareerSection({
 export function RowIcon({ src, alt }: { src: string; alt: string }) {
   return (
     <div
-      className="relative h-[50px] w-[50px] shrink-0"
+      className="relative h-[24px] w-[24px] shrink-0 rounded-none"
       title={alt}
       aria-label={alt}
     >
-      <Image src={src} alt={alt} fill sizes="50px" className="object-contain" />
+      <Image src={src} alt={alt} fill sizes="24px" className="rounded-none object-contain" />
     </div>
   );
 }

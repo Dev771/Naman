@@ -14,7 +14,7 @@ export function Experience() {
         {home.experience.map((job) => (
           <li
             key={job.name}
-            className="group/row -mx-2 flex flex-col gap-2 rounded-md border-b border-blue-500/20 px-2 py-4 transition-colors hover:bg-blue-500/[0.03]"
+            className="group/row -mx-2 flex flex-col gap-2 border-b border-blue-500/20 px-2 py-4 transition-colors hover:bg-blue-500/[0.03]"
           >
             <div className="flex items-center gap-4">
               <RowIcon src={job.logo} alt={`${job.name} — ${job.role}`} />
@@ -34,7 +34,7 @@ export function Experience() {
             </div>
             {/* Indent matches icon (50px) + gap (16px) = 66px so the
                 description aligns with the name text above. */}
-            <p className="hidden pl-[66px] font-sans text-[16px] leading-[21px] text-ink-subtle md:block">
+            <p className="hidden pl-[40px] font-sans text-[16px] leading-[21px] text-ink-subtle md:block">
               {job.description}
             </p>
           </li>

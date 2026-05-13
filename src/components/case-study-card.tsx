@@ -105,7 +105,7 @@ export function CaseStudyCard({
       {pos && (
         <span
           aria-hidden="true"
-          className="hover-pill pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-1/2"
+          className="hover-pill pointer-events-none absolute z-20 w-max -translate-x-1/2 -translate-y-1/2"
           style={{ left: pos.x, top: pos.y }}
         >
           <Pill variant={variant} />
@@ -142,7 +142,7 @@ function Pill({ variant, compact = false }: { variant: 'view' | 'soon'; compact?
   const radius = compact ? 'rounded-[8px]' : 'rounded-[10px]';
   return (
     <span
-      className={`inline-flex items-center ${gap} ${radius} ${bg} ${padding} font-sans ${text} font-medium leading-none text-white shadow-e3`}
+      className={`inline-flex items-center whitespace-nowrap ${gap} ${radius} ${bg} ${padding} font-sans ${text} font-medium leading-none text-white shadow-e3`}
     >
       <EyeIcon size={iconSize} />
       {isView ? 'View Case study' : 'Coming soon'}

@@ -9,6 +9,9 @@
  * Polaroid video frame is rendered separately as a sticky element on
  * the Homepage (see app/page.tsx + components/home/photo-frame.tsx).
  */
+import Image from 'next/image';
+import { home } from '@/lib/assets';
+
 const SOCIALS = [
   { label: 'Instagram', href: 'https://instagram.com', svg: <InstagramSvg /> },
   { label: 'LinkedIn', href: 'https://linkedin.com', svg: <LinkedInSvg /> },
@@ -18,8 +21,34 @@ const SOCIALS = [
 
 export function Hero() {
   return (
-    <section className="relative w-full bg-cream">
-      <div className="mx-auto flex max-w-page flex-col items-center gap-8 px-4 pb-10 pt-12 text-center md:px-0 md:pb-16 md:pt-20">
+    <section className="relative -mt-[72px] w-full overflow-hidden pb-8">
+      {/* Full-bleed background image — Next.js Image handles responsive srcset */}
+      <Image
+        src={home.heroBg}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+        aria-hidden="true"
+      />
+
+      {/* Layer 1 — top readability scrim: keeps headline/body text legible */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-b from-[rgba(253,251,248,0.68)] via-[rgba(253,251,248,0.30)] to-transparent"
+      />
+
+      {/* Layer 2 — cinematic bottom fade: starts at ~55% height, dissolves
+          fully into the page background (#fdfbf8) by the section edge so
+          there is zero hard cut into the WorkCards section below. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#fdfbf8] via-[rgba(253,251,248,0.85)] to-transparent"
+      />
+
+      {/* Content — sits above the image layers */}
+      <div className="relative z-10 mx-auto flex max-w-page flex-col items-center gap-8 px-4 pb-10 pt-[120px] text-center md:px-0 md:pb-16 md:pt-[152px]">
         <div className="flex flex-col items-center gap-4">
           <span className="font-script text-[24px] leading-none text-blue-500 md:text-[32px]">
             Namaste ji
