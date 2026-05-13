@@ -12,8 +12,8 @@ import { CareerSection } from './career-section';
 export function SideProject() {
   return (
     <CareerSection title="Side Project" blurb={home.sideProject.blurb}>
-      <div className="flex flex-col items-stretch gap-6 md:flex-row md:items-center">
-        <div className="relative h-[202px] w-full shrink-0 overflow-hidden rounded-[6px] border border-[rgba(186,169,148,0.1)] bg-dearly md:h-[140px] md:w-[249px]">
+      <div className="flex flex-col items-stretch gap-3 md:flex-row md:items-center md:gap-6">
+        <div className="relative h-[202px] w-full shrink-0 overflow-hidden rounded-[12px] border border-[rgba(186,169,148,0.1)] bg-dearly md:h-[140px] md:w-[249px] md:rounded-[6px]">
           <Image
             src={home.sideProject.image}
             alt=""
@@ -22,11 +22,11 @@ export function SideProject() {
             className="object-cover opacity-95"
           />
         </div>
-        <div className="flex flex-1 flex-col gap-2">
-          <p className="font-sans text-[18px] font-medium leading-[19.2px] tracking-[-0.32px] text-ink md:text-[20px]">
+        <div className="flex flex-1 flex-col gap-1 md:gap-2">
+          <p className="font-sans text-[15px] font-medium leading-tight tracking-[-0.32px] text-ink md:text-[20px] md:leading-[19.2px]">
             {home.sideProject.title}
           </p>
-          <p className="font-sans text-[16px] leading-normal tracking-[-0.14px] text-[rgba(36,33,29,0.5)]">
+          <p className="font-sans text-[13px] leading-snug tracking-[-0.14px] text-ink-subtle md:text-[16px] md:leading-normal">
             {home.sideProject.description}
           </p>
         </div>

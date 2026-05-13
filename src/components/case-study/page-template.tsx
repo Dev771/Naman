@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { SmartImage } from '@/components/smart-image';
 import { CaseStudyToc } from './case-study-toc';
 import { Blocks } from './case-study-blocks';
@@ -42,6 +43,19 @@ export function CaseStudyTemplate({ cs }: { cs: CaseStudy }) {
       </div>
 
       <div className="mx-auto w-full max-w-page px-4 md:px-0">
+        {/* Mobile Header: Back button + Large Title (hidden on desktop) */}
+        <div className="mb-10 flex flex-col items-start md:hidden">
+          <Link
+            href="/work"
+            className="mb-8 inline-flex items-center gap-1.5 font-sans text-[16px] font-medium leading-[24px] text-ink-subtle transition-colors hover:text-ink"
+          >
+            <BackArrow /> Back
+          </Link>
+          <h1 className="font-sans text-[28px] font-semibold leading-[1.2] tracking-[-0.4px] text-ink">
+            {cs.title}
+          </h1>
+        </div>
+
         <div className="flex gap-10 md:gap-16 lg:gap-24">
           <CaseStudyToc items={tocItems} title={cs.title} />
 
@@ -141,5 +155,19 @@ function Pair({ label, value }: { label: string; value: string }) {
       <dt className="text-[12px] leading-[18px] uppercase text-ink">{label}</dt>
       <dd className="text-[16px] leading-[24px] text-ink">{value}</dd>
     </div>
+  );
+}
+
+function BackArrow() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M19 12H5" />
+      <path d="M12 5l-7 7 7 7" />
+
+
+
+
+
+    </svg>
   );
 }

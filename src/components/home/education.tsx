@@ -15,16 +15,14 @@ export function Education() {
         {home.education.map((school) => (
           <li
             key={school.name}
-            className="-mx-2 flex items-center gap-4 border-b border-blue-500/20 px-2 py-4 transition-colors hover:bg-blue-500/[0.03]"
+            className="-mx-2 flex items-center gap-3 border-b border-blue-500/20 px-2 py-3 transition-colors hover:bg-blue-500/[0.03] md:gap-4 md:py-4"
           >
             <RowIcon src={school.logo} alt={school.fullName} />
-            <div className="flex flex-1 flex-wrap items-center justify-between gap-x-8 gap-y-1">
-              <div className="flex flex-wrap items-baseline gap-x-8 gap-y-1">
-                <p className="font-sans text-[18px] font-medium leading-[30px] text-ink md:text-[20px]">
-                  {school.name}
-                </p>
-              </div>
-              <p className="font-sans text-[16px] leading-[30px] text-ink-subtle md:text-[18px]">
+            <div className="flex flex-1 items-center justify-between gap-x-2 md:gap-x-8">
+              <p className="font-sans text-[15px] font-medium leading-tight text-ink md:text-[20px] md:leading-[30px]">
+                {school.name}
+              </p>
+              <p className="font-sans text-[13px] leading-tight text-ink-subtle md:text-[18px] md:leading-[30px]">
                 {school.period}
               </p>
             </div>

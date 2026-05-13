@@ -24,13 +24,8 @@ const TILE_STYLES = [
 ];
 
 export function UiGrid() {
-  // Duplicate the source arrays so each marquee can loop seamlessly via
-  // the -50% translate.
-  const phoneTrack = [...selectedWork.phones, ...selectedWork.phones];
-  const wideTrack = [...selectedWork.wide, ...selectedWork.wide];
-
   return (
-    <section className="mx-auto flex w-full max-w-page flex-col gap-4 px-4 md:px-0">
+    <section className="mx-auto flex w-full max-w-page flex-col gap-6 px-0 pb-16 md:gap-12">
       <header className="flex flex-col gap-4">
         <h2 className="font-sans text-[18px] font-medium leading-[24px] text-ink">
           Some other work
@@ -40,56 +35,40 @@ export function UiGrid() {
         </p>
       </header>
 
-      {/* Phone marquee — auto-scrolls left, pauses on hover (gap 24px per Figma) */}
-      <div className="overflow-hidden">
-        <div
-          className="marquee-track flex w-max gap-6"
-          style={{ ['--marquee-duration' as string]: '45s' }}
-        >
-          {phoneTrack.map((src, i) => (
-            <div
-              key={`phone-${i}`}
-              className="relative h-[220px] w-[102px] shrink-0 overflow-hidden rounded-[16px] bg-cream"
-            >
-              <SmartImage src={src} alt="" fill sizes="102px" className="object-cover" />
-            </div>
-          ))}
-        </div>
+      {/* Phone Grid — static 2 columns on mobile, 4 on desktop */}
+      <div className="grid w-full grid-cols-2 gap-4 px-4 md:grid-cols-4 md:gap-6 md:px-0">
+        {selectedWork.phones.slice(0, 4).map((src, i) => (
+          <div
+            key={`phone-${i}`}
+            className="relative aspect-[102/220] w-full overflow-hidden rounded-[16px] bg-cream shadow-sm"
+          >
+            <SmartImage src={src} alt="" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
+          </div>
+        ))}
       </div>
 
-      {/* Square grid — full section width, 2 cols. row gap 16, col gap 12, px 16 (Figma 467:12787) */}
-      <div className="grid w-full grid-cols-2 gap-x-3 gap-y-4 px-4">
-        {selectedWork.squares.map((src, i) => {
-          const { rotate, lifted } = TILE_STYLES[i] ?? TILE_STYLES[0];
-          return (
-            <div key={src} className="flex aspect-square items-center justify-center">
-              <div
-                className={`relative aspect-square w-[80%] overflow-hidden rounded-[8px] border-[3px] border-neutral-100 ${rotate} ${
-                  lifted ? 'shadow-e3' : ''
-                }`}
-              >
-                <SmartImage src={src} alt="" fill sizes="(min-width: 1000px) 460px, 50vw" className="object-cover" />
-              </div>
-            </div>
-          );
-        })}
+      {/* Square Grid — static 2 columns, perfectly straight with subtle border */}
+      <div className="grid w-full grid-cols-2 gap-4 px-4 md:grid-cols-3 md:gap-6 md:px-0">
+        {selectedWork.squares.slice(0, 6).map((src, i) => (
+          <div
+            key={`square-${i}`}
+            className="relative aspect-square w-full overflow-hidden rounded-[12px] border border-neutral-100 bg-cream shadow-sm"
+          >
+            <SmartImage src={src} alt="" fill sizes="(min-width: 768px) 33vw, 50vw" className="object-cover" />
+          </div>
+        ))}
       </div>
 
-      {/* Wide marquee — auto-scrolls left, pauses on hover (gap 24px per Figma) */}
-      <div className="overflow-hidden">
-        <div
-          className="marquee-track flex w-max gap-6"
-          style={{ ['--marquee-duration' as string]: '50s' }}
-        >
-          {wideTrack.map((src, i) => (
-            <div
-              key={`wide-${i}`}
-              className="relative h-[220px] w-[309px] shrink-0 overflow-hidden bg-cream md:h-[260px] md:w-[380px]"
-            >
-              <SmartImage src={src} alt="" fill sizes="(min-width: 1000px) 380px, 309px" className="object-cover" />
-            </div>
-          ))}
-        </div>
+      {/* Wide Grid — stacked vertically */}
+      <div className="flex w-full flex-col gap-4 px-4 md:gap-6 md:px-0">
+        {selectedWork.wide.slice(0, 1).map((src, i) => (
+          <div
+            key={`wide-${i}`}
+            className="relative aspect-[380/260] w-full overflow-hidden rounded-[12px] bg-cream shadow-sm"
+          >
+            <SmartImage src={src} alt="" fill sizes="(min-width: 768px) 100vw, 100vw" className="object-cover" />
+          </div>
+        ))}
       </div>
     </section>
   );

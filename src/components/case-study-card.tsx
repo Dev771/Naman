@@ -78,22 +78,24 @@ export function CaseStudyCard({
 
         {/* Static mobile-only corner chip — sits inside the image so it
             stays anchored to the visual even when the title row wraps. */}
-        <span
-          aria-hidden="true"
-          className="touch-pill pointer-events-none absolute bottom-3 right-3 z-10 hidden"
-        >
-          <Pill variant={variant} compact />
-        </span>
+        {cs.comingSoon && (
+          <span
+            aria-hidden="true"
+            className="touch-pill pointer-events-none absolute bottom-3 right-3 z-10 hidden"
+          >
+            <Pill variant={variant} compact />
+          </span>
+        )}
       </div>
 
       {/* Title + meta — also inside the card so the cursor pill tracks
           here too. Clicking anywhere on this row navigates via the
           outer <Link>. */}
-      <div className="flex items-start justify-between gap-3 px-4 md:px-0">
-        <p className="font-sans text-[18px] font-medium leading-[24px] text-ink md:text-[20px]">
+      <div className="flex flex-col items-start gap-1 px-4 md:flex-row md:justify-between md:gap-3 md:px-0">
+        <p className="font-sans text-[20px] font-medium leading-tight text-ink md:leading-[24px]">
           {cs.cardTitle}
         </p>
-        <p className="text-right font-sans text-[16px] font-normal leading-[24px] text-ink-subtle md:text-[20px] md:font-medium md:text-ink-muted">
+        <p className="font-sans text-[16px] leading-tight text-ink-subtle md:text-right md:text-[20px] md:font-medium md:text-ink-muted md:leading-[24px]">
           {cs.cardMeta}
         </p>
       </div>
