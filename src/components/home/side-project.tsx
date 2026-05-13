@@ -1,25 +1,46 @@
+'use client';
+
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { home } from '@/lib/assets';
 import { CareerSection } from './career-section';
+import { ArrowUpRight } from 'lucide-react';
 
 /**
  * Side Project — Figma node 479:2644 (desktop) / 479:3216 (mobile).
  * 249×140 (mobile 358×202) cream tile (#efe7dc) with a Landscape image
- * background and a centered "Dearly" wordmark — Logo asset + Playfair
- * Display SemiBold "Dearly" 24/40 px. Title + body description on the
- * right (or below on mobile).
+ * background. Title + body description on the right (or below on mobile).
+ * Hover pill on desktop, static CTA below description on mobile.
  */
 export function SideProject() {
+  const wrapperRef = useRef<HTMLAnchorElement>(null);
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+
+  const onMove = (e: React.MouseEvent) => {
+    const rect = wrapperRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
   return (
     <CareerSection title="Side Project" blurb={home.sideProject.blurb}>
-      <div className="flex flex-col items-stretch gap-3 md:flex-row md:items-center md:gap-6">
+      <a
+        href="https://dearly57.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        ref={wrapperRef}
+        onMouseEnter={onMove}
+        onMouseMove={onMove}
+        onMouseLeave={() => setPos(null)}
+        className="cs-card-link group relative flex flex-col items-stretch gap-3 md:flex-row md:items-center md:gap-6 block"
+      >
         <div className="relative h-[202px] w-full shrink-0 overflow-hidden rounded-[12px] border border-[rgba(186,169,148,0.1)] bg-dearly md:h-[140px] md:w-[249px] md:rounded-[6px]">
           <Image
             src={home.sideProject.image}
             alt=""
             fill
             sizes="(min-width: 768px) 249px, 100vw"
-            className="object-cover opacity-95"
+            className="object-cover opacity-95 transition-transform duration-500 group-hover:scale-[1.02]"
           />
         </div>
         <div className="flex flex-1 flex-col gap-1 md:gap-2">
@@ -29,28 +50,30 @@ export function SideProject() {
           <p className="font-sans text-[13px] leading-snug tracking-[-0.14px] text-ink-subtle md:text-[16px] md:leading-normal">
             {home.sideProject.description}
           </p>
-        </div>
-      </div>
-    </CareerSection>
-  );
-}
 
-function DearlyLogo() {
-  // Inline replica of the Dearly mark — heart-style outline.
-  // Mobile: 58×43, Desktop: 38×28 (per Figma 479:2685).
-  return (
-    <svg
-      viewBox="0 0 38 28"
-      fill="none"
-      aria-hidden="true"
-      className="h-[43px] w-[58px] md:h-7 md:w-[38px]"
-    >
-      <path
-        d="M19 27 L4 13 a8 8 0 1 1 11-11 l4 4 4-4 a8 8 0 1 1 11 11 z"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-        fill="none"
-      />
-    </svg>
+          {/* Static Mobile CTA Button */}
+          <div className="mt-2 block md:hidden">
+            <span className="inline-flex items-center justify-center whitespace-nowrap gap-1.5 rounded-[8px] bg-blue-500 px-4 py-2.5 font-sans text-[14px] font-medium leading-none text-white shadow-e3 w-max">
+              View Live Link
+              <ArrowUpRight size={16} strokeWidth={2} />
+            </span>
+          </div>
+        </div>
+
+        {/* Hover Pill Desktop */}
+        {pos && (
+          <span
+            aria-hidden="true"
+            className="hover-pill pointer-events-none absolute z-20 w-max -translate-x-1/2 -translate-y-1/2 hidden md:block"
+            style={{ left: pos.x, top: pos.y }}
+          >
+            <span className="inline-flex items-center whitespace-nowrap gap-2 rounded-[10px] bg-blue-500 px-5 py-2.5 font-sans text-[14px] font-medium leading-none text-white shadow-e3">
+              <ArrowUpRight size={18} strokeWidth={1.8} />
+              View Live Link
+            </span>
+          </span>
+        )}
+      </a>
+    </CareerSection>
   );
 }

@@ -12,34 +12,36 @@ import { SmartImage } from '@/components/smart-image';
 export function MeHero() {
   return (
     <section className="mx-auto flex w-full max-w-page flex-col items-center gap-8 pt-6 md:pt-12">
-      <h1 className="text-grain px-4 text-center font-display text-[48px] leading-[1.05] text-ink md:px-0 md:text-[96px]">
-        Well this is <span className="text-blue-500">Me!</span>
+      <h1 className="text-grain px-4 text-center font-display text-[48px] uppercase leading-[1.05] text-ink md:px-0 md:text-[96px]">
+        WELL THIS IS <span className="text-blue-500">ME!</span>
       </h1>
 
-      {/* Full-width image — no horizontal padding on mobile */}
-      <div className="relative aspect-[390/433] w-full overflow-hidden md:aspect-[864/536] md:max-w-[864px]">
-        <SmartImage
-          src={about.hero}
-          alt="Naman Bhateja"
-          fill
-          sizes="(min-width: 1200px) 864px, 100vw"
-          priority
-          className="object-cover"
-        />
-      </div>
+      <div className="flex w-full max-w-page flex-col gap-8 px-4 md:px-0">
+        {/* Full-width image on mobile, max-width on desktop, with rounded corners */}
+        <div className="relative aspect-[390/433] w-full overflow-hidden rounded-[12px] md:aspect-[1200/536] md:rounded-[24px]">
+          <SmartImage
+            src={about.hero}
+            alt="Naman Bhateja"
+            fill
+            sizes="(min-width: 1200px) 1200px, 100vw"
+            priority
+            className="object-cover object-top"
+          />
+        </div>
 
-      <div className="flex w-full flex-col gap-4 px-4 md:px-0">
-        <p className="font-sans text-[20px] leading-[29.25px] text-ink">
-          {about.greeting}
-        </p>
-        {about.bio.map((p, i) => (
-          <p
-            key={i}
-            className="font-sans text-[20px] leading-[29.25px] text-ink-subtle"
-          >
-            {p}
+        <div className="flex w-full flex-col gap-4">
+          <p className="font-sans text-[20px] font-medium leading-[29.25px] text-ink">
+            {about.greeting}
           </p>
-        ))}
+          {about.bio.map((p, i) => (
+            <p
+              key={i}
+              className="font-sans text-[20px] leading-[29.25px] text-ink-subtle"
+            >
+              {p}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
   );

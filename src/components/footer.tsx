@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { useHomeContext } from '@/components/home/home-context';
+import { ArrowUpRight } from 'lucide-react';
+import { SmartEmailCta } from '@/components/smart-email-cta';
 
 /**
  * Footer — Figma node 479:2746 (desktop) / 479:3318 (mobile).
@@ -24,15 +26,15 @@ const sections = [
   {
     title: "LET'S CHAT",
     items: [
-      { label: 'LinkedIn', href: 'https://linkedin.com', external: true },
-      { label: 'Email', href: 'mailto:hi@example.com' },
-      { label: 'Whatsapp', href: '#' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/namanbhateja0808', external: true },
+      { label: 'Email', href: 'mailto:namanbhateja.work@gmail.com' },
+      { label: 'WhatsApp', href: 'https://wa.me/919811535385', external: true },
     ],
   },
   {
     title: 'SOCIALS',
     items: [
-      { label: 'Figma', href: 'https://figma.com', external: true },
+      { label: 'Figma', href: 'https://www.figma.com/@namanbhateja1', external: true },
       { label: 'Instagram', href: 'https://instagram.com', external: true },
     ],
   },
@@ -63,18 +65,30 @@ export function Footer() {
                 <div key={section.title} className="flex min-w-[120px] flex-col gap-5">
                   <p className="text-[12px] leading-[14.4px] tracking-[0.04em]">{section.title}</p>
                   <ul className="flex flex-col gap-3 text-[16px] leading-normal">
-                    {section.items.map((item) => (
-                      <li key={item.label}>
-                        <Link
-                          href={item.href}
-                          target={'external' in item && item.external ? '_blank' : undefined}
-                          rel={'external' in item && item.external ? 'noopener noreferrer' : undefined}
-                          className="transition-opacity hover:opacity-80"
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
+                    {section.items.map((item) => {
+                      if (item.label === 'Email') {
+                        return (
+                          <li key={item.label}>
+                            <SmartEmailCta email={item.href.replace('mailto:', '')} label={item.label} />
+                          </li>
+                        );
+                      }
+                      return (
+                        <li key={item.label}>
+                          <Link
+                            href={item.href}
+                            target={'external' in item && item.external ? '_blank' : undefined}
+                            rel={'external' in item && item.external ? 'noopener noreferrer' : undefined}
+                            className="group inline-flex items-center gap-1 transition-opacity hover:opacity-80"
+                          >
+                            {item.label}
+                            {'external' in item && item.external && (
+                              <ArrowUpRight size={14} strokeWidth={2} className="opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            )}
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}

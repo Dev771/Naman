@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { SmartImage } from '@/components/smart-image';
 import type { CaseStudy } from '@/lib/case-studies';
+import { Eye } from 'lucide-react';
 
 /**
  * Hero card for a case study — used on the homepage and Selected Work.
@@ -153,15 +154,5 @@ function Pill({ variant, compact = false }: { variant: 'view' | 'soon'; compact?
 }
 
 function EyeIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M12 5c-5 0-9 4.5-10 7 1 2.5 5 7 10 7s9-4.5 10-7c-1-2.5-5-7-10-7z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-      <circle cx="12" cy="12" r="3" fill="currentColor" />
-    </svg>
-  );
+  return <Eye size={size} strokeWidth={1.8} />;
 }

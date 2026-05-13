@@ -3,6 +3,7 @@ import { SmartImage } from '@/components/smart-image';
 import { CaseStudyToc } from './case-study-toc';
 import { Blocks } from './case-study-blocks';
 import type { CaseStudy } from '@/lib/case-studies';
+import { ArrowLeft } from 'lucide-react';
 
 // Re-export image building blocks for any caller that wants to compose
 // custom JSX outside the data-driven `Blocks` renderer.
@@ -159,15 +160,5 @@ function Pair({ label, value }: { label: string; value: string }) {
 }
 
 function BackArrow() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M19 12H5" />
-      <path d="M12 5l-7 7 7 7" />
-
-
-
-
-
-    </svg>
-  );
+  return <ArrowLeft size={16} strokeWidth={2} />;
 }

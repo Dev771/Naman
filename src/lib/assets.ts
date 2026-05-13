@@ -52,28 +52,36 @@ export const home = {
   // `logo` URLs are pulled from the CSV so each row icon is the company mark.
   experience: [
     {
-      name: 'Nomadcredit',
+      name: 'Nomad Credit',
       role: 'Product Designer',
-      period: 'Jan 2026 - Present',
+      period: 'Jan 2025 - Present',
       logo: C('image/upload/v1777223394/Nomadlogo_gdxaug.png'),
       description:
-        'Built AI-driven hiring flows, redesigned recruiter dashboards, and created a multi-platform design system.',
+        'Helping simplify complex education loan journeys through intuitive and student-friendly product experiences.',
     },
     {
-      name: 'Goodspace',
+      name: 'GoodSpace',
       role: 'Product Designer',
       period: 'Aug 2023 - Dec 2024',
       logo: C('image/upload/v1777223372/Goodspacelogo_bubgjb.png'),
       description:
-        'Built AI-driven hiring flows, redesigned recruiter dashboards, and created a multi-platform design system.',
+        'Designed human-centered AI hiring experiences that improved engagement and reduced hiring friction.',
     },
     {
-      name: 'Kloudrac',
-      role: 'Product Designer',
-      period: 'Aug 2023 - Dec 2024',
+      name: 'Kloudrac Group',
+      role: 'UI Designer',
+      period: 'Apr 2023 - Jul 2023',
       logo: C('image/upload/v1777223436/kloudraclogo_hwu4xm.png'),
       description:
-        'Built AI-driven hiring flows, redesigned recruiter dashboards, and created a multi-platform design system.',
+        'Improved enterprise dashboard usability by making complex B2B workflows more intuitive and actionable.',
+    },
+    {
+      name: "BVICAM",
+      role: 'UI Developer',
+      period: 'Jan 2023 - Apr 2023',
+      logo: C('image/upload/v1777223469/Collegelogo_jjccif.png'),
+      description:
+        'Bridged design and development to create accessible and engaging digital experiences for students and faculty.',
     },
   ],
 
@@ -121,7 +129,7 @@ export const home = {
 
 // Figma 466:4964 desktop / 466:5436 mobile
 export const about = {
-  hero: C('image/upload/v1777222158/Meimage_wqsaei.png'),
+  hero: C('image/upload/v1778693161/Meimage_wqsaei.png'),
   greeting: 'Hey, welcome to my digital abode. Nice to meet you!',
   bio: [
     "Hey there! I'm Naman Bhateja, a passionate UX/UI designer with over a year of experience crafting seamless digital experiences across web, mobile, and AI-driven platforms.",

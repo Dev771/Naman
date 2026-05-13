@@ -442,6 +442,7 @@ export const caseStudies: CaseStudy[] = [
             ],
           },
           { type: 'para', html: '👉 The issue wasn&rsquo;t lack of content, it was lack of structure and guidance' },
+          { type: 'image', src: C('image/upload/v1778685713/e2c4e5fcabca1f285744b8a19482d30954dc198c_u7qsby.png'), alt: 'Veda Smriti — problem visualization' },
         ],
       },
       {

@@ -16,8 +16,8 @@ const LEFT_HEIGHTS = [166.4, 115.8, 199.6, 88.3, 143.5, 109.7, 280.8, 208.9, 175
 const RIGHT_HEIGHTS = [347.1, 259.6, 260, 256.8, 228.9, 260, 260];
 
 // Image indices into about.carousel (zero-based):
-const LEFT_IDX = [0, 2, 3, 4, 6, 8, 10, 12, 14, 16]; // I1,I3,I4,I5,I7,I9,I11,I13,I15,I17
-const RIGHT_IDX = [1, 5, 7, 9, 11, 13, 15]; // I2,I6,I8,I10,I12,I14,I16
+const LEFT_IDX = [0, 2, 3, 5, 6, 8, 9, 11, 13, 14];
+const RIGHT_IDX = [1, 4, 7, 10, 12, 15, 16];
 
 export function PhotoGallery() {
   return (

@@ -11,12 +11,13 @@
  */
 import Image from 'next/image';
 import { home } from '@/lib/assets';
+import { FileText, MessageCircle } from 'lucide-react';
 
 const SOCIALS = [
   { label: 'Instagram', href: 'https://instagram.com', svg: <InstagramSvg /> },
-  { label: 'LinkedIn', href: 'https://linkedin.com', svg: <LinkedInSvg /> },
-  { label: 'WhatsApp', href: '#', svg: <WhatsAppSvg /> },
-  { label: 'Figma', href: 'https://figma.com', svg: <FigmaSvg /> },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/namanbhateja0808', svg: <LinkedInSvg /> },
+  { label: 'WhatsApp', href: 'https://wa.me/919811535385', svg: <WhatsAppSvg /> },
+  { label: 'Figma', href: 'https://www.figma.com/@namanbhateja1', svg: <FigmaSvg /> },
 ];
 
 export function Hero() {
@@ -98,51 +99,41 @@ export function Hero() {
 }
 
 function ResumeIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-      <path d="M14 2v6h6" />
-      <path d="M16 13H8" />
-      <path d="M16 17H8" />
-      <path d="M10 9H8" />
-    </svg>
-  );
+  return <FileText size={20} strokeWidth={2} />;
 }
 
 function InstagramSvg() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
     </svg>
   );
 }
 
 function LinkedInSvg() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.34 18.34H5.67v-8.67h2.67v8.67zm-1.34-9.84a1.55 1.55 0 1 1 0-3.1 1.55 1.55 0 0 1 0 3.1zm11.34 9.84h-2.67v-4.21c0-1 0-2.29-1.4-2.29-1.4 0-1.62 1.1-1.62 2.22v4.28H9.99V9.67h2.56v1.18h.04c.36-.68 1.23-1.4 2.53-1.4 2.71 0 3.21 1.78 3.21 4.1v4.79z" />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+      <rect x="2" y="9" width="4" height="12"></rect>
+      <circle cx="4" cy="4" r="2"></circle>
     </svg>
   );
 }
 
 function WhatsAppSvg() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20.52 3.48A11.85 11.85 0 0 0 12.04 0C5.5 0 .19 5.31.18 11.84c0 2.08.55 4.12 1.6 5.91L0 24l6.4-1.68a11.83 11.83 0 0 0 5.64 1.43h.01c6.54 0 11.85-5.31 11.86-11.84A11.78 11.78 0 0 0 20.52 3.48zm-8.48 18.27h-.01a9.84 9.84 0 0 1-5.01-1.37l-.36-.21-3.8 1 1.02-3.7-.23-.38a9.83 9.83 0 0 1-1.5-5.21c0-5.43 4.43-9.85 9.86-9.85 2.63 0 5.1 1.03 6.96 2.89a9.78 9.78 0 0 1 2.88 6.97c-.01 5.43-4.43 9.86-9.81 9.86zm5.4-7.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.63.07-.3-.15-1.25-.46-2.39-1.47a8.96 8.96 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.6.13-.13.3-.34.45-.5.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.6-.91-2.19-.24-.57-.48-.5-.66-.51l-.56-.01c-.2 0-.5.07-.77.37-.27.3-1.02 1-1.02 2.44s1.04 2.83 1.19 3.03c.15.2 2.05 3.13 4.97 4.39.7.3 1.24.48 1.66.61.7.22 1.33.19 1.83.12.56-.08 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.07-.13-.27-.2-.57-.35z" />
-    </svg>
-  );
+  return <MessageCircle size={20} strokeWidth={1.8} />;
 }
 
 function FigmaSvg() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M9 24a4 4 0 0 1-4-4v-4h4a4 4 0 0 1 0 8z" />
-      <path d="M5 12a4 4 0 0 1 4-4h4v8H9a4 4 0 0 1-4-4z" />
-      <path d="M5 4a4 4 0 0 1 4-4h4v8H9a4 4 0 0 1-4-4z" />
-      <path d="M13 0h4a4 4 0 0 1 0 8h-4V0z" />
-      <path d="M19 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"></path>
+      <path d="M12 2h3.5A3.5 3.5 0 0 1 19 5.5v0A3.5 3.5 0 0 1 15.5 9H12V2z"></path>
+      <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"></path>
+      <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"></path>
+      <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"></path>
     </svg>
   );
 }
