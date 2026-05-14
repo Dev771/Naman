@@ -17,15 +17,17 @@ export function MeHero() {
       </h1>
 
       <div className="flex w-full max-w-page flex-col gap-8 px-4 md:px-0">
-        {/* Full-width image on mobile, max-width on desktop, with rounded corners */}
-        <div className="relative aspect-[390/433] w-full overflow-hidden rounded-[12px] md:aspect-[1200/536] md:rounded-[24px]">
+        {/* Full-width image on mobile, max-width on desktop, with rounded corners.
+            object-position biases upward (~20% from top) so the face/head stays
+            in frame rather than the torso. */}
+        <div className="relative aspect-[390/433] w-full overflow-hidden rounded-[12px] md:aspect-[1200/700] md:rounded-[24px]">
           <SmartImage
             src={about.hero}
             alt="Naman Bhateja"
             fill
             sizes="(min-width: 1200px) 1200px, 100vw"
             priority
-            className="object-cover object-top"
+            className="object-cover [object-position:center_20%]"
           />
         </div>
 

@@ -45,8 +45,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </defs>
         </svg>
         <HomeProvider>
-          <Nav />
-          {children}
+          {/* Parallax: main content sits on an elevated cream layer (z-10)
+              that scrolls over the fixed footer (z-0) sitting behind it.
+              The spacer's height is synced to the footer's actual height
+              via --footer-h (set by the Footer component) so the cream
+              layer's bottom edge lines up exactly with the footer's top
+              when fully scrolled — no gap, no overlap. */}
+          <div className="relative z-10 bg-cream">
+            <Nav />
+            {children}
+          </div>
+          <div
+            aria-hidden="true"
+            style={{ height: 'var(--footer-h, 400px)' }}
+          />
           <Footer />
         </HomeProvider>
       </body>

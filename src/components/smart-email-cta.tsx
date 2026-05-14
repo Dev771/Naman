@@ -19,9 +19,11 @@ export function SmartEmailCta({
 }: SmartEmailCtaProps) {
   const [copied, setCopied] = useState(false);
 
-  const encodedSubject = encodeURIComponent(subject);
-  const encodedBody = encodeURIComponent(body);
-  const mailto = `mailto:${email}?subject=${encodedSubject}&body=${encodedBody}`;
+  const gmailUrl =
+    `https://mail.google.com/mail/?view=cm&fs=1&tf=1&source=mailto` +
+    `&to=${encodeURIComponent(email)}` +
+    `&su=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(body)}`;
 
   const handleClick = () => {
     navigator.clipboard.writeText(email);
@@ -31,10 +33,12 @@ export function SmartEmailCta({
 
   return (
     <a
-      href={mailto}
+      href={gmailUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={handleClick}
       className={className}
-      title="Opens mail client & copies email to clipboard"
+      title="Opens Gmail compose & copies email to clipboard"
     >
       {copied ? (
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#a8e0b6]">

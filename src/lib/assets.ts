@@ -75,14 +75,6 @@ export const home = {
       description:
         'Improved enterprise dashboard usability by making complex B2B workflows more intuitive and actionable.',
     },
-    {
-      name: "BVICAM",
-      role: 'UI Developer',
-      period: 'Jan 2023 - Apr 2023',
-      logo: C('image/upload/v1777223469/Collegelogo_jjccif.png'),
-      description:
-        'Bridged design and development to create accessible and engaging digital experiences for students and faculty.',
-    },
   ],
 
   // Figma 479:2601 — Education. The CSV ships the same college logo for
