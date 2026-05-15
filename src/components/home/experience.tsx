@@ -37,8 +37,8 @@ export function Experience() {
                   </p>
                 </div>
               </div>
-              {/* Indent matches icon (50px) + gap (16px) = 66px so the description aligns with the name text above. On mobile indent is ~44px */}
-              <p className="pl-[44px] md:pl-[66px] overflow-hidden font-sans text-[16px] text-ink-subtle transition-all duration-300 md:leading-[20px] max-h-0 opacity-0 group-hover:max-h-[240px] group-hover:opacity-100 group-hover:pt-1">
+              {/* Indent aligns description with company name: icon (24px) + gap (16px desktop / 12px mobile) = 40px / 36px */}
+              <p className="pl-[36px] md:pl-[40px] overflow-hidden font-sans text-[16px] text-ink-subtle transition-all duration-300 md:leading-[20px] max-h-0 opacity-0 group-hover:max-h-[240px] group-hover:opacity-100 group-hover:pt-1">
                 {job.description}
               </p>
             </li>

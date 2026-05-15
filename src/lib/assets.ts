@@ -95,16 +95,25 @@ export const home = {
     },
   ],
 
-  // Figma 479:2644 — Side Project (Dearly card)
-  sideProject: {
-    cardTitle: 'Dearly',
-    title: 'Dearly, Postcard App',
-    blurb:
-      "I'm learning how to code and exploring new AI tools.",
-    description:
-      'A curated collection of functional and well-designed objects. Crafted a personalized postcard app, enabling users to share unique moments with loved ones through custom designs and heartfelt messages.',
-    image: C('image/upload/v1777222161/Dearly_t200qp.png'),
-  },
+  // Figma 479:2644 — Side Projects (Swar Air & Dearly)
+  sideProjects: [
+    {
+      cardTitle: 'Swar Air',
+      title: 'Swar Air, Music Experience',
+      description:
+        'A gesture-powered music experience using hand tracking and WebSockets, enabling users to control and play music through intuitive real-time motion interactions.',
+      image: 'https://res.cloudinary.com/duqqte7b4/image/upload/v1778870597/Screenshot_2026-05-16_000927_tr7fqo.png',
+      href: 'https://swar-air57.figma.site/',
+    },
+    {
+      cardTitle: 'Dearly',
+      title: 'Dearly, Postcard App',
+      description:
+        'A curated collection of functional and well-designed objects. Crafted a personalized postcard app, enabling users to share unique moments with loved ones through custom designs and heartfelt messages.',
+      image: C('image/upload/v1777222161/Dearly_t200qp.png'),
+      href: 'https://dearly57.vercel.app/',
+    },
+  ],
 
   // Figma 479:2691 — Tools (icon grid). Cloudinary URLs not provided, so we
   // ship simple monochrome SVG placeholders rendered inline. Replace with

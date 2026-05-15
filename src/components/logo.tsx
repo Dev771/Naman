@@ -13,6 +13,7 @@ export function Logo({ size = 48, className = '' }: { size?: number; className?:
       width={size}
       height={size}
       priority
+      unoptimized
       className={className}
     />
   );

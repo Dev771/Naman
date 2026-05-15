@@ -71,17 +71,30 @@ export function AmbientAudioProvider({ children }: { children: React.ReactNode }
       if (unlockedRef.current) return;
       unlockedRef.current = true;
       // If a hero was already visible before the gesture, start playing now
-      if (wantsPlay.current && !mutedRef.current) {
+      if (wantsPlay.current && !mutedRef.current && !document.hidden) {
         fadeIn();
       }
     };
     window.addEventListener('click', unlock, { once: true });
     window.addEventListener('keydown', unlock, { once: true });
     window.addEventListener('touchstart', unlock, { once: true, passive: true });
+    
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        fadeOut();
+      } else {
+        if (wantsPlay.current && !mutedRef.current && unlockedRef.current) {
+          fadeIn();
+        }
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    
     return () => {
       window.removeEventListener('click', unlock);
       window.removeEventListener('keydown', unlock);
       window.removeEventListener('touchstart', unlock);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
