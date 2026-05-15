@@ -25,7 +25,7 @@ const AUDIO_SRC =
   '/freesound_community-birds-singing-in-and-leaves-rustling-with-the-wind-14557.mp3.mpeg';
 
 const FADE_DURATION = 1400; // ms
-const TARGET_VOLUME = 1.00; // 80 % — immersive but not intrusive
+const TARGET_VOLUME = 0.70; // 70 % — immersive but not intrusive
 const TICK_MS = 16;   // ~60 fps ramp steps
 
 interface AmbientAudioCtx {

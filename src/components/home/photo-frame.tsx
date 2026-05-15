@@ -24,11 +24,11 @@ const BOTTOM_STRIP = 56;
 const FRAME_W = VIDEO_W + SIDE_BORDER * 2;
 const FRAME_H = VIDEO_H + TOP_BORDER + BOTTOM_STRIP;
 
-export function PhotoFrame() {
+export function PhotoFrame({ className }: { className?: string }) {
   return (
     <div
       style={{ width: FRAME_W, height: FRAME_H }}
-      className="polaroid-wobble relative rounded-[2px] bg-gradient-to-br from-white to-[#e9e9e9] shadow-[0_22px_50px_-14px_rgba(53,50,79,0.28),0_6px_14px_-6px_rgba(0,0,0,0.14)] transition-transform duration-300 hover:!rotate-[1deg] hover:!translate-y-0 hover:scale-[1.04]"
+      className={`relative rounded-[2px] bg-gradient-to-br from-white to-[#e9e9e9] shadow-[0_22px_50px_-14px_rgba(53,50,79,0.28),0_6px_14px_-6px_rgba(0,0,0,0.14)] transition-transform duration-300 hover:!rotate-[1deg] hover:!translate-y-0 hover:scale-[1.04] ${className || 'polaroid-wobble'}`}
     >
       <div
         style={{

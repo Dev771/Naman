@@ -19,7 +19,8 @@ import Image from 'next/image';
 import { home } from '@/lib/assets';
 import { FileText } from 'lucide-react';
 import { useHeroAudio } from '@/hooks/use-hero-audio';
-
+import { PhotoFrame } from './photo-frame';
+import { useHomeContext } from './home-context';
 
 const SOCIALS = [
   { label: 'Instagram', href: 'https://instagram.com', svg: <InstagramSvg /> },
@@ -31,6 +32,7 @@ const SOCIALS = [
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   useHeroAudio(sectionRef, 'home-hero');
+  const { onSectionEnter, onSectionLeave } = useHomeContext();
 
   return (
     <section ref={sectionRef} className="relative -mt-[72px] w-full overflow-hidden pb-8">
@@ -45,50 +47,49 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      {/* Layer 1 — top readability scrim: keeps headline/body text legible */}
+      {/* Layer 1 — softer top readability scrim to make mountain illustration more integrated */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-[rgba(253,251,248,0.68)] via-[rgba(253,251,248,0.30)] to-transparent"
+        className="absolute inset-0 bg-gradient-to-b from-[rgba(253,251,248,0.50)] via-[rgba(253,251,248,0.10)] to-transparent"
       />
 
-      {/* Layer 2 — cinematic bottom fade: starts at ~55% height, dissolves
-          fully into the page background (#fdfbf8) by the section edge so
-          there is zero hard cut into the WorkCards section below. */}
+      {/* Layer 2 — cinematic bottom fade */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#fdfbf8] via-[rgba(253,251,248,0.85)] to-transparent"
+        className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-[#fdfbf8] via-[rgba(253,251,248,0.75)] to-transparent"
       />
 
-      {/* Content — sits above the image layers */}
-      <div className="relative z-10 mx-auto flex max-w-page flex-col items-center gap-8 px-4 pb-10 pt-[120px] text-center md:px-0 md:pb-16 md:pt-[152px]">
-        <div className="flex flex-col items-center gap-4">
-          <span className="font-script text-[24px] leading-none text-blue-500 md:text-[32px]">
+      {/* Content — increased top spacing and vertical rhythm */}
+      <div className="relative z-10 mx-auto flex max-w-page flex-col items-center gap-[40px] px-4 pb-[64px] pt-[88px] text-center md:gap-8 md:px-0 md:pb-16 md:pt-[152px]">
+        <div className="flex flex-col items-center gap-[20px] md:gap-4">
+          <span className="font-script text-[32px] leading-none text-blue-500">
             Namaste ji
           </span>
 
-          <h1 className="font-display text-[56px] uppercase leading-[1] tracking-[0] text-ink md:text-[112px] md:leading-[1]">
-            Welcome to <span className="text-blue-500">Naman&rsquo;s</span> <br /> Internet corners
+          <h1 className="font-display text-[56px] uppercase leading-[0.95] tracking-tight text-ink md:text-[112px] md:leading-[1]">
+            Welcome to <span className="text-blue-500">Naman&rsquo;s</span><br />Internet corners
           </h1>
         </div>
 
-        <p className="max-w-[732px] font-sans text-[16px] leading-[1.5] text-ink md:text-[20px] md:leading-[29.25px]">
+        <p className="max-w-[732px] font-sans text-[16px] leading-[1.6] text-ink md:text-[20px] md:leading-[29.25px]">
           I&rsquo;m a product designer who enjoys turning messy ideas into simple, thoughtful
           experiences, especially where AI meets real user problems
         </p>
 
-        {/* CTA cluster.
-            Mobile: Resume button is full-width on top, the 4 social
-            chips sit in a centered row below.
-            Desktop (md+): everything collapses into a single inline row. */}
-        <div className="flex w-full flex-col items-stretch justify-center gap-3 md:w-auto md:flex-row md:items-center">
+        {/* CTA cluster with larger mobile touch targets and softer shadow styling */}
+        <div 
+          className="flex w-full flex-col items-stretch justify-center gap-[16px] md:w-auto md:flex-row md:items-center md:gap-3"
+          onMouseEnter={onSectionEnter}
+          onMouseLeave={onSectionLeave}
+        >
           <a
             href="#"
-            className="flex h-[50px] w-full items-center justify-center gap-3 rounded-md bg-blue-500 px-5 text-[16px] font-medium leading-[24px] text-bg-tint1 transition-transform hover:-translate-y-0.5 md:w-auto"
+            className="flex h-[56px] w-full items-center justify-center gap-3 rounded-[16px] bg-blue-500 px-6 text-[18px] font-medium leading-[24px] text-bg-tint1 shadow-[0_8px_24px_-8px_rgba(47,91,255,0.4)] transition-transform hover:-translate-y-0.5 md:h-[50px] md:w-auto md:rounded-md md:text-[16px] md:shadow-none"
           >
             <ResumeIcon />
             Resume
           </a>
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-[16px] md:gap-3">
             {SOCIALS.map((s) => (
               <a
                 key={s.label}
@@ -96,16 +97,19 @@ export function Hero() {
                 aria-label={s.label}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-md bg-ink/[0.04] text-ink transition-colors hover:bg-blue-500 hover:text-bg-tint1"
+                className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-[16px] bg-white/70 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.05)] border border-white/60 text-ink transition-colors hover:bg-blue-500 hover:text-white md:h-[50px] md:w-[50px] md:rounded-md md:bg-ink/[0.04] md:border-none md:shadow-none md:hover:text-bg-tint1"
               >
                 {s.svg}
               </a>
             ))}
           </div>
         </div>
+
+        {/* Inline Photo Frame (Mobile Only) with larger top spacing */}
+        <div className="mt-8 flex w-full justify-center md:hidden">
+          <PhotoFrame className="!rotate-0 scale-105 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.15)] hover:scale-110" />
+        </div>
       </div>
-
-
     </section>
   );
 }

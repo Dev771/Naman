@@ -126,7 +126,7 @@ export const about = {
   bio: [
     "Hey there! I'm Naman Bhateja, a passionate UX/UI designer with over a year of experience crafting seamless digital experiences across web, mobile, and AI-driven platforms.",
     'Fuelled by a personal drive for creating intuitive solutions, I specialize in designing user-centric interfaces that not only solve problems but also enhance the joy of everyday interactions.',
-    "Outside of work, you'll find me exploring new recipes in the kitchen 🧑‍🍳, baking delicious treats 🍪, getting lost in a great book 📖, experimenting with paint 🎨, lifting weights 🏋️, or indulging in a binge-worthy series or movie (especially cartoons!) 🎥. Oh, and I can never resist window-shopping for sneakers.",
+    "Outside of work, you'll find me exploring new recipes in the kitchen, baking delicious treats, getting lost in a great book, experimenting with paint, lifting weights, or indulging in a binge-worthy series or movie (especially cartoons!). Oh, and I can never resist window-shopping for sneakers.",
   ],
   photoDumpTitle: 'Photo Dump',
   photoDumpDescription:

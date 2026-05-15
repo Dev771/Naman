@@ -112,26 +112,25 @@ export function Footer() {
           onMouseEnter={onSectionEnter}
           onMouseLeave={onSectionLeave}
         >
-          <div className="flex flex-col items-start gap-12 md:flex-row md:items-start md:justify-between md:gap-0">
-            {/* Left side: Wordmark and Image */}
+          {/* ── DESKTOP layout: wordmark+image left, links right ── */}
+          <div className="hidden md:flex md:flex-row md:items-start md:justify-between">
+            {/* Left: Wordmark + Pokemon image + credits */}
             <div className="flex flex-col items-start gap-[32px]">
               <div className="font-display tracking-tight">
                 <p className="text-[44px] leading-[1.1] text-[#fffefc]">
                   त्याग शान्ति अन्तराम
                 </p>
               </div>
-
               <div className="flex flex-col items-start justify-center">
                 <div className="relative w-[286px] h-[160px] hover:scale-105 transition-transform duration-500 ease-out">
-                  <Image 
-                    src="https://res.cloudinary.com/duqqte7b4/image/upload/v1778843685/Gemini_Generated_Image_rxacw7rxacw7rxac-Photoroom_1_oxm0tt.png" 
-                    alt="Playful Pokemon Characters" 
+                  <Image
+                    src="https://res.cloudinary.com/duqqte7b4/image/upload/v1778843685/Gemini_Generated_Image_rxacw7rxacw7rxac-Photoroom_1_oxm0tt.png"
+                    alt="Playful Pokemon Characters"
                     fill
                     className="object-contain pointer-events-none"
                     unoptimized
                   />
                 </div>
-                
                 <div className="text-[#fffefc] text-[16px] flex flex-wrap items-center gap-[20px] font-normal leading-[14.4px] mt-1">
                   <span className="font-['Inter']">Made by official DIET Coke paguls 💅</span>
                   <div className="flex gap-[4px] items-center">
@@ -143,8 +142,8 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Right side: Links */}
-            <div className="flex flex-col gap-10 sm:flex-row sm:gap-[80px]">
+            {/* Right: Links */}
+            <div className="flex flex-row gap-[80px]">
               {sections.map((section) => (
                 <div key={section.title} className="flex min-w-[min-content] flex-col gap-[20px]">
                   <p className="text-[12px] font-normal leading-[14.4px] text-[#fffefc]">
@@ -164,10 +163,10 @@ export function Footer() {
                             <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-[#fffefc]/50 transition-all duration-300 group-hover:w-full"></span>
                           </span>
                           {'external' in item && item.external && (
-                            <ArrowUpRight 
-                              size={14} 
-                              strokeWidth={2.5} 
-                              className="opacity-60 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" 
+                            <ArrowUpRight
+                              size={14}
+                              strokeWidth={2.5}
+                              className="opacity-60 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                             />
                           )}
                         </Link>
@@ -176,6 +175,73 @@ export function Footer() {
                   </ul>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* ── MOBILE layout (Figma 567:58): wordmark → links wrap → image/credits ── */}
+          <div className="flex flex-col gap-6 md:hidden">
+            {/* Wordmark full-width */}
+            <div className="font-display tracking-tight w-full">
+              <p className="text-[36px] leading-[1.1] text-[#fffefc]">
+                त्याग शान्ति अन्तराम
+              </p>
+            </div>
+
+            {/* Links: flex-wrap so NAVIGATION + LET'S CHAT sit side by side,
+                SOCIALS wraps onto its own row — mirrors Figma gap-[80px] wrap */}
+            <div className="flex flex-wrap gap-x-[80px] gap-y-10">
+              {sections.map((section) => (
+                <div key={section.title} className="flex flex-col gap-[20px]">
+                  <p className="text-[12px] font-normal leading-[14.4px] text-[#fffefc] tracking-wide">
+                    {section.title}
+                  </p>
+                  <ul className="flex flex-col gap-[12px] text-[16px] leading-normal text-[#fffefc]">
+                    {section.items.map((item) => (
+                      <li key={item.label}>
+                        <Link
+                          href={item.href}
+                          target={'external' in item && item.external ? '_blank' : undefined}
+                          rel={'external' in item && item.external ? 'noopener noreferrer' : undefined}
+                          className="group relative inline-flex items-center gap-1.5 transition-all hover:opacity-80"
+                        >
+                          <span className="relative">
+                            {item.label}
+                            <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-[#fffefc]/50 transition-all duration-300 group-hover:w-full"></span>
+                          </span>
+                          {'external' in item && item.external && (
+                            <ArrowUpRight
+                              size={14}
+                              strokeWidth={2.5}
+                              className="opacity-60 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            />
+                          )}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            {/* Pokemon image + credits — centered, matches Figma bottom section */}
+            <div className="flex flex-col items-center w-full mt-2">
+              <div className="relative w-[286px] h-[160px] hover:scale-105 transition-transform duration-500 ease-out">
+                <Image
+                  src="https://res.cloudinary.com/duqqte7b4/image/upload/v1778843685/Gemini_Generated_Image_rxacw7rxacw7rxac-Photoroom_1_oxm0tt.png"
+                  alt="Playful Pokemon Characters"
+                  fill
+                  className="object-contain pointer-events-none"
+                  unoptimized
+                />
+              </div>
+              <div className="text-[#fffefc] text-[16px] flex flex-col items-center gap-[20px] font-normal leading-[14.4px] mt-1 text-center">
+                <span className="font-['Inter']">Made by official DIET Coke paguls 💅</span>
+                <div className="flex gap-[4px] items-center">
+                  <span className="italic underline decoration-solid">Dev G.</span>
+                  <span className="font-['Inter']">&</span>
+                  <span className="italic underline decoration-solid">Naman B.</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
