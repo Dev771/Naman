@@ -133,3 +133,37 @@ html { scroll-behavior: smooth; }
   font-display: swap;
 }
 
+/* ── Ambient audio mute-button sound-bar animations ─────────────────── */
+/* Three offset animations so each bar bounces at a different rhythm,
+   giving a natural equaliser appearance. */
+@keyframes bar-bounce {
+  0%, 100% { transform: scaleY(0.4); }
+  50%       { transform: scaleY(1);   }
+}
+.animate-bar-1 {
+  animation: bar-bounce 1.1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+.animate-bar-2 {
+  animation: bar-bounce 1.1s ease-in-out 0.22s infinite;
+  transform-origin: bottom;
+}
+.animate-bar-3 {
+  animation: bar-bounce 1.1s ease-in-out 0.44s infinite;
+  transform-origin: bottom;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-bar-1,
+  .animate-bar-2,
+  .animate-bar-3 { animation: none; }
+}
+
+/* ── Pokémon custom cursor (About Me page only) ─────────────────────── */
+/* Applied only on hover-capable devices so touch/mobile is untouched.  */
+/* 48×48 Cloudinary image, hotspot centred at (24, 24).                 */
+@media (hover: hover) and (pointer: fine) {
+  .cursor-pokemon,
+  .cursor-pokemon * {
+    cursor: url('https://res.cloudinary.com/duqqte7b4/image/upload/h_80,c_scale/v1778849607/Gemini_Generated_Image_mkaw3hmkaw3hmkaw-Photoroom_1_dyiwgt.png') 40 40, auto !important;
+  }
+}

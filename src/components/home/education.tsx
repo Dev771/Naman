@@ -23,7 +23,7 @@ export function Education() {
                 <p className="font-sans text-[15px] font-medium leading-tight text-ink md:text-[20px] md:leading-[30px]">
                   {school.name}
                 </p>
-                <p className="max-h-0 overflow-hidden font-sans text-[12px] leading-[16px] text-ink-subtle opacity-0 transition-all duration-300 group-hover:max-h-[48px] group-hover:opacity-100 group-hover:pt-1 md:text-[14px] md:leading-[20px]">
+                <p className="max-h-0 overflow-hidden font-sans text-[16px] leading-[16px] text-ink-subtle opacity-0 transition-all duration-300 group-hover:max-h-[48px] group-hover:opacity-100 group-hover:pt-1 md:text-[14px] md:leading-[20px]">
                   {school.fullName}
                 </p>
               </div>

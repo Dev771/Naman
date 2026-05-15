@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Logo } from './logo';
+import { MuteButton } from './mute-button';
 
 /**
  * Top Bar — Figma node 479:2453 (desktop) / 479:3094 (mobile).
@@ -10,7 +11,7 @@ import { Logo } from './logo';
  * Scrolls naturally with the page — no fixed positioning.
  * Transparent gradient background blends seamlessly with the hero image
  * directly beneath it. Logo anchors left; nav links are absolutely centred
- * in the bar for a balanced, studio-site feel.
+ * in the bar for a balanced, studio-site feel. Mute button anchors right.
  */
 const links = [
   { href: '/work', label: 'Selected Work' },
@@ -50,6 +51,11 @@ export function Nav() {
             })}
           </ul>
         </nav>
+
+        {/* Mute button — right anchor */}
+        <div className="ml-auto shrink-0">
+          <MuteButton />
+        </div>
 
       </div>
     </header>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="page-enter flex flex-col gap-8 pb-16 md:gap-20 md:pb-24">
+    <main className="cursor-pokemon page-enter flex flex-col gap-8 pb-16 md:gap-20 md:pb-24">
       <MeHero />
       <Reveal><PhotoGallery /></Reveal>
     </main>

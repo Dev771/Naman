@@ -8,10 +8,18 @@
  *
  * Polaroid video frame is rendered separately as a sticky element on
  * the Homepage (see app/page.tsx + components/home/photo-frame.tsx).
+ *
+ * Ambient audio: birds / nature soundscape plays while this section is
+ * visible in the viewport (via useHeroAudio + AmbientAudioContext).
  */
+'use client';
+
+import { useRef } from 'react';
 import Image from 'next/image';
 import { home } from '@/lib/assets';
 import { FileText } from 'lucide-react';
+import { useHeroAudio } from '@/hooks/use-hero-audio';
+
 
 const SOCIALS = [
   { label: 'Instagram', href: 'https://instagram.com', svg: <InstagramSvg /> },
@@ -21,8 +29,11 @@ const SOCIALS = [
 ];
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useHeroAudio(sectionRef, 'home-hero');
+
   return (
-    <section className="relative -mt-[72px] w-full overflow-hidden pb-8">
+    <section ref={sectionRef} className="relative -mt-[72px] w-full overflow-hidden pb-8">
       {/* Full-bleed background image — Next.js Image handles responsive srcset */}
       <Image
         src={home.heroBg}
@@ -92,8 +103,9 @@ export function Hero() {
             ))}
           </div>
         </div>
-
       </div>
+
+
     </section>
   );
 }
