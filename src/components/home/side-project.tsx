@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { home } from '@/lib/assets';
 import { CareerSection } from './career-section';
 import { ArrowUpRight } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 /**
  * Side Project — Figma node 479:2644 (desktop) / 479:3216 (mobile).
@@ -43,6 +44,7 @@ function SideProjectCard({ project }: { project: typeof home.sideProjects[0] }) 
       onMouseEnter={onMove}
       onMouseMove={onMove}
       onMouseLeave={() => setPos(null)}
+      onClick={() => trackEvent('cta_click_live_link', { name: project.title, location: 'Side Projects' })}
       className="cs-card-link group relative flex flex-col items-stretch gap-3 md:flex-row md:items-center md:gap-6 block"
     >
       <div className="relative h-[202px] w-full shrink-0 overflow-hidden rounded-[12px] border border-[rgba(186,169,148,0.1)] bg-[#efe7dc] md:h-[140px] md:w-[249px] md:rounded-[6px]">

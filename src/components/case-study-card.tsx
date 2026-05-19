@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { SmartImage } from '@/components/smart-image';
 import type { CaseStudy } from '@/lib/case-studies';
 import { Eye } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 /**
  * Hero card for a case study — used on the homepage and Selected Work.
@@ -126,7 +127,12 @@ export function CaseStudyCard({
   }
 
   return (
-    <Link href={cs.href} aria-label={`View ${cs.title} case study`} className="block">
+    <Link 
+      href={cs.href} 
+      aria-label={`View ${cs.title} case study`} 
+      onClick={() => trackEvent('cta_click_case_study', { name: cs.title, id: cs.id, location: 'Case Study Cards' })}
+      className="block"
+    >
       {body}
     </Link>
   );

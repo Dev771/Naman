@@ -21,6 +21,7 @@ import { FileText } from 'lucide-react';
 import { useHeroAudio } from '@/hooks/use-hero-audio';
 import { PhotoFrame } from './photo-frame';
 import { useHomeContext } from './home-context';
+import { trackEvent } from '@/lib/analytics';
 
 const SOCIALS = [
   { label: 'Instagram', href: 'https://instagram.com', svg: <InstagramSvg /> },
@@ -84,6 +85,7 @@ export function Hero() {
         >
           <a
             href="#"
+            onClick={() => trackEvent('cta_click_resume', { name: 'Resume', location: 'Hero' })}
             className="flex h-[56px] w-full items-center justify-center gap-3 rounded-[16px] bg-blue-500 px-6 text-[18px] font-medium leading-[24px] text-bg-tint1 shadow-[0_8px_24px_-8px_rgba(47,91,255,0.4)] transition-transform hover:-translate-y-0.5 md:h-[50px] md:w-auto md:rounded-md md:text-[16px] md:shadow-none"
           >
             <ResumeIcon />
@@ -97,6 +99,7 @@ export function Hero() {
                 aria-label={s.label}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent(`cta_click_${s.label.toLowerCase()}`, { name: s.label, location: 'Hero' })}
                 className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-[16px] bg-white/70 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.05)] border border-white/60 text-ink transition-colors hover:bg-blue-500 hover:text-white md:h-[50px] md:w-[50px] md:rounded-md md:bg-ink/[0.04] md:border-none md:shadow-none md:hover:text-bg-tint1"
               >
                 {s.svg}

@@ -5,6 +5,8 @@ import { Nav } from '@/components/nav';
 import { Footer } from '@/components/footer';
 import { HomeProvider } from '@/components/home/home-context';
 import { AmbientAudioProvider } from '@/lib/ambient-audio';
+import Script from 'next/script';
+import { AnalyticsTracker } from '@/components/analytics-tracker';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://namanbhateja.com'),
@@ -31,9 +33,32 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const fontVars = `${inter.variable} ${display.variable} ${script.variable} ${instrumentSerif.variable} ${playfair.variable}`;
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
   return (
     <html lang="en" className={fontVars}>
       <body className="bg-cream font-sans text-ink">
+        {/* Google Analytics 4 Script Integration */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
+        <AnalyticsTracker />
+
         {/* SVG filter that gives the hero heading a textured, marker-stippled
             edge — referenced via `filter: url(#grain)` in CSS. Lives at the
             page root so any text element on any route can apply it. */}

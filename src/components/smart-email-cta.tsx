@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackEvent } from '@/lib/analytics';
 
 interface SmartEmailCtaProps {
   email: string;
@@ -28,6 +29,7 @@ export function SmartEmailCta({
   const handleClick = () => {
     navigator.clipboard.writeText(email);
     setCopied(true);
+    trackEvent('cta_click_email', { name: label, email, type: 'clipboard_copy' });
     setTimeout(() => setCopied(false), 2000);
   };
 

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { Logo } from './logo';
 import { MuteButton } from './mute-button';
 import { useAmbientAudio } from '@/lib/ambient-audio';
+import { trackEvent } from '@/lib/analytics';
 
 /**
  * Top Bar — Figma node 479:2453 (desktop) / 567:4502 (mobile).
@@ -48,7 +49,15 @@ export function Nav() {
         <div className="relative mx-auto flex h-[80px] w-full max-w-page items-center justify-between px-4 md:h-[72px] md:px-0">
 
           {/* Logo — left anchor */}
-          <Link href="/" aria-label="Naman home" className="block shrink-0" onClick={() => setMenuOpen(false)}>
+          <Link 
+            href="/" 
+            aria-label="Naman home" 
+            className="block shrink-0" 
+            onClick={() => {
+              setMenuOpen(false);
+              trackEvent('cta_click_logo', { name: 'Logo', location: 'Navbar' });
+            }}
+          >
             <Logo size={44} />
           </Link>
 
@@ -74,6 +83,7 @@ export function Nav() {
                     <Link
                       href={l.href}
                       data-active={isActive ? 'true' : 'false'}
+                      onClick={() => trackEvent('cta_click_navbar', { name: l.label, href: l.href, location: 'Navbar Desktop' })}
                       className={`nav-underline transition-colors duration-200 hover:text-ink ${
                         isActive ? 'text-ink' : 'text-nav-inactive'
                       }`}
@@ -121,7 +131,10 @@ export function Nav() {
                 <li key={l.href} className="flex h-[40px] items-center justify-end">
                   <Link
                     href={l.href}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      trackEvent('cta_click_navbar', { name: l.label, href: l.href, location: 'Navbar Mobile' });
+                    }}
                     className={`transition-colors ${isActive ? 'text-[#2f5bff]' : 'hover:text-[#2f5bff]'}`}
                   >
                     {l.label}

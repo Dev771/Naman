@@ -1,9 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import { SmartImage } from '@/components/smart-image';
 import { CaseStudyToc } from './case-study-toc';
 import { Blocks } from './case-study-blocks';
 import type { CaseStudy } from '@/lib/case-studies';
 import { ArrowLeft } from 'lucide-react';
+import { useScrollTracking } from '@/hooks/use-scroll-tracking';
 
 // Re-export image building blocks for any caller that wants to compose
 // custom JSX outside the data-driven `Blocks` renderer.
@@ -31,6 +34,8 @@ const slugify = (s: string) =>
     .replace(/^-+|-+$/g, '');
 
 export function CaseStudyTemplate({ cs }: { cs: CaseStudy }) {
+  useScrollTracking(cs.slug, cs.title);
+
   const tocItems = [
     { id: 'overview', label: 'TL;DR (Overview)' },
     ...cs.sections.map((s) => ({ id: slugify(s.title), label: s.title })),

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { useHomeContext } from '@/components/home/home-context';
 import { ArrowUpRight } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 /**
  * Footer — Refined UI based on Figma design.
@@ -156,6 +157,7 @@ export function Footer() {
                           href={item.href}
                           target={'external' in item && item.external ? '_blank' : undefined}
                           rel={'external' in item && item.external ? 'noopener noreferrer' : undefined}
+                          onClick={() => trackEvent(`cta_click_${item.label.toLowerCase().replace(/\s+/g, '_')}`, { name: item.label, href: item.href, location: 'Footer Desktop' })}
                           className="group relative inline-flex items-center gap-1.5 transition-all hover:opacity-80"
                         >
                           <span className="relative">
@@ -202,6 +204,7 @@ export function Footer() {
                           href={item.href}
                           target={'external' in item && item.external ? '_blank' : undefined}
                           rel={'external' in item && item.external ? 'noopener noreferrer' : undefined}
+                          onClick={() => trackEvent(`cta_click_${item.label.toLowerCase().replace(/\s+/g, '_')}`, { name: item.label, href: item.href, location: 'Footer Mobile' })}
                           className="group relative inline-flex items-center gap-1.5 transition-all hover:opacity-80"
                         >
                           <span className="relative">
