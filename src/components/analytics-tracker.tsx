@@ -11,7 +11,8 @@ function TrackerInner() {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
       if (measurementId) {
-        const url = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
+        const searchString = searchParams?.toString();
+        const url = pathname + (searchString ? `?${searchString}` : '');
         
         // Log standard page view config update to GA4
         (window as any).gtag('config', measurementId, {

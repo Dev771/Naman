@@ -32,7 +32,14 @@ const sections = [
       { label: 'Home', href: '/' },
       { label: 'Selected Work', href: '/work' },
       { label: 'About', href: '/about' },
-      { label: 'Resume', href: '#' },
+      {
+        label: 'Resume',
+        href: 'https://drive.google.com/file/d/1ofUmWHZwSUZJEKFz1V1-UJ_5ZoTeloLb/view?usp=sharing',
+        external: true,
+        onClick: () => {
+          trackEvent('resume_cta_click', { source: typeof window !== 'undefined' ? window.location.pathname : 'unknown' });
+        },
+      },
     ],
   },
   {
@@ -47,7 +54,6 @@ const sections = [
     title: 'SOCIALS',
     items: [
       { label: 'Figma', href: 'https://www.figma.com/@namanbhateja1', external: true },
-      { label: 'Instagram', href: 'https://instagram.com', external: true },
     ],
   },
 ];
@@ -157,7 +163,17 @@ export function Footer() {
                           href={item.href}
                           target={'external' in item && item.external ? '_blank' : undefined}
                           rel={'external' in item && item.external ? 'noopener noreferrer' : undefined}
-                          onClick={() => trackEvent(`cta_click_${item.label.toLowerCase().replace(/\s+/g, '_')}`, { name: item.label, href: item.href, location: 'Footer Desktop' })}
+                          onClick={() => {
+          const eventMap: Record<string, string> = {
+            'Resume': 'resume_cta_click',
+          };
+          const eventName = eventMap[item.label] || `cta_click_${item.label.toLowerCase().replace(/\s+/g, '_')}`;
+          trackEvent(eventName, {
+            name: item.label,
+            href: item.href,
+            location: 'Footer Desktop',
+          });
+        }}
                           className="group relative inline-flex items-center gap-1.5 transition-all hover:opacity-80"
                         >
                           <span className="relative">
@@ -204,7 +220,17 @@ export function Footer() {
                           href={item.href}
                           target={'external' in item && item.external ? '_blank' : undefined}
                           rel={'external' in item && item.external ? 'noopener noreferrer' : undefined}
-                          onClick={() => trackEvent(`cta_click_${item.label.toLowerCase().replace(/\s+/g, '_')}`, { name: item.label, href: item.href, location: 'Footer Mobile' })}
+                          onClick={() => {
+          const eventMap: Record<string, string> = {
+            'Resume': 'resume_cta_click',
+          };
+          const eventName = eventMap[item.label] || `cta_click_${item.label.toLowerCase().replace(/\s+/g, '_')}`;
+          trackEvent(eventName, {
+            name: item.label,
+            href: item.href,
+            location: 'Footer Mobile',
+          });
+        }}
                           className="group relative inline-flex items-center gap-1.5 transition-all hover:opacity-80"
                         >
                           <span className="relative">

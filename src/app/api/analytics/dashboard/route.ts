@@ -195,7 +195,7 @@ export async function GET() {
       const category = categoryRaw.charAt(0).toUpperCase() + categoryRaw.slice(1);
       return { category, count, percentage: 0 };
     });
-    const devicesList = rawDevices.map((d) => ({
+    const devicesList = rawDevices.map((d: { category: string; count: number; percentage: number }) => ({
       ...d,
       percentage: deviceTotal > 0 ? Math.round((d.count / deviceTotal) * 100) : 0,
     })).sort((a: any, b: any) => b.count - a.count);

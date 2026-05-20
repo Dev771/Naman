@@ -24,7 +24,6 @@ import { useHomeContext } from './home-context';
 import { trackEvent } from '@/lib/analytics';
 
 const SOCIALS = [
-  { label: 'Instagram', href: 'https://instagram.com', svg: <InstagramSvg /> },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/namanbhateja0808', svg: <LinkedInSvg /> },
   { label: 'WhatsApp', href: 'https://wa.me/919811535385', svg: <WhatsAppSvg /> },
   { label: 'Figma', href: 'https://www.figma.com/@namanbhateja1', svg: <FigmaSvg /> },
@@ -84,9 +83,11 @@ export function Hero() {
           onMouseLeave={onSectionLeave}
         >
           <a
-            href="#"
-            onClick={() => trackEvent('cta_click_resume', { name: 'Resume', location: 'Hero' })}
-            className="flex h-[56px] w-full items-center justify-center gap-3 rounded-[16px] bg-blue-500 px-6 text-[18px] font-medium leading-[24px] text-bg-tint1 shadow-[0_8px_24px_-8px_rgba(47,91,255,0.4)] transition-transform hover:-translate-y-0.5 md:h-[50px] md:w-auto md:rounded-md md:text-[16px] md:shadow-none"
+            href="https://drive.google.com/file/d/1ofUmWHZwSUZJEKFz1V1-UJ_5ZoTeloLb/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackEvent('resume_cta_click', { name: 'Resume', location: 'Hero', source: typeof window !== 'undefined' ? window.location.pathname : 'unknown' })}
+            className="flex h-[56px] w-full items-center justify-center gap-3 rounded-[16px] bg-blue-500 px-8 text-[18px] font-medium leading-[24px] text-bg-tint1 shadow-[0_8px_24px_-8px_rgba(47,91,255,0.4)] transition-all hover:-translate-y-0.5 hover:bg-blue-600 md:h-[50px] md:w-auto md:rounded-md md:text-[16px] md:shadow-none"
           >
             <ResumeIcon />
             Resume
@@ -121,15 +122,7 @@ function ResumeIcon() {
   return <FileText size={20} strokeWidth={2} />;
 }
 
-function InstagramSvg() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-    </svg>
-  );
-}
+
 
 function LinkedInSvg() {
   return (
