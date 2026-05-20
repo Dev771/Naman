@@ -67,7 +67,7 @@ export function Hero() {
           </span>
 
           <h1 className="font-display text-[56px] uppercase leading-[0.95] tracking-tight text-ink md:text-[112px] md:leading-[1]">
-            Welcome to <span className="text-blue-500">Naman&rsquo;s</span><br />Internet corners
+            Welcome to <span className="text-blue-500">Naman&rsquo;s</span><br />internet corner
           </h1>
         </div>
 
@@ -86,7 +86,15 @@ export function Hero() {
             href="https://drive.google.com/file/d/1ofUmWHZwSUZJEKFz1V1-UJ_5ZoTeloLb/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackEvent('resume_cta_click', { name: 'Resume', location: 'Hero', source: typeof window !== 'undefined' ? window.location.pathname : 'unknown' })}
+            onClick={(e) => {
+              const link = document.createElement('a');
+              link.href = 'https://drive.google.com/uc?export=download&id=1ofUmWHZwSUZJEKFz1V1-UJ_5ZoTeloLb';
+              link.download = 'Naman_Resume.pdf';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              trackEvent('resume_cta_click', { name: 'Resume', location: 'Hero', source: typeof window !== 'undefined' ? window.location.pathname : 'unknown' });
+            }}
             className="flex h-[56px] w-full items-center justify-center gap-3 rounded-[16px] bg-blue-500 px-8 text-[18px] font-medium leading-[24px] text-bg-tint1 shadow-[0_8px_24px_-8px_rgba(47,91,255,0.4)] transition-all hover:-translate-y-0.5 hover:bg-blue-600 md:h-[50px] md:w-auto md:rounded-md md:text-[16px] md:shadow-none"
           >
             <ResumeIcon />

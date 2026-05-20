@@ -164,16 +164,24 @@ export function Footer() {
                           target={'external' in item && item.external ? '_blank' : undefined}
                           rel={'external' in item && item.external ? 'noopener noreferrer' : undefined}
                           onClick={() => {
-          const eventMap: Record<string, string> = {
-            'Resume': 'resume_cta_click',
-          };
-          const eventName = eventMap[item.label] || `cta_click_${item.label.toLowerCase().replace(/\s+/g, '_')}`;
-          trackEvent(eventName, {
-            name: item.label,
-            href: item.href,
-            location: 'Footer Desktop',
-          });
-        }}
+                            if (item.label === 'Resume') {
+                              const link = document.createElement('a');
+                              link.href = 'https://drive.google.com/uc?export=download&id=1ofUmWHZwSUZJEKFz1V1-UJ_5ZoTeloLb';
+                              link.download = 'Naman_Resume.pdf';
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                            }
+                            const eventMap: Record<string, string> = {
+                              'Resume': 'resume_cta_click',
+                            };
+                            const eventName = eventMap[item.label] || `cta_click_${item.label.toLowerCase().replace(/\s+/g, '_')}`;
+                            trackEvent(eventName, {
+                              name: item.label,
+                              href: item.href,
+                              location: 'Footer Desktop',
+                            });
+                          }}
                           className="group relative inline-flex items-center gap-1.5 transition-all hover:opacity-80"
                         >
                           <span className="relative">
@@ -221,16 +229,24 @@ export function Footer() {
                           target={'external' in item && item.external ? '_blank' : undefined}
                           rel={'external' in item && item.external ? 'noopener noreferrer' : undefined}
                           onClick={() => {
-          const eventMap: Record<string, string> = {
-            'Resume': 'resume_cta_click',
-          };
-          const eventName = eventMap[item.label] || `cta_click_${item.label.toLowerCase().replace(/\s+/g, '_')}`;
-          trackEvent(eventName, {
-            name: item.label,
-            href: item.href,
-            location: 'Footer Mobile',
-          });
-        }}
+                            if (item.label === 'Resume') {
+                              const link = document.createElement('a');
+                              link.href = 'https://drive.google.com/uc?export=download&id=1ofUmWHZwSUZJEKFz1V1-UJ_5ZoTeloLb';
+                              link.download = 'Naman_Resume.pdf';
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                            }
+                            const eventMap: Record<string, string> = {
+                              'Resume': 'resume_cta_click',
+                            };
+                            const eventName = eventMap[item.label] || `cta_click_${item.label.toLowerCase().replace(/\s+/g, '_')}`;
+                            trackEvent(eventName, {
+                              name: item.label,
+                              href: item.href,
+                              location: 'Footer Mobile',
+                            });
+                          }}
                           className="group relative inline-flex items-center gap-1.5 transition-all hover:opacity-80"
                         >
                           <span className="relative">

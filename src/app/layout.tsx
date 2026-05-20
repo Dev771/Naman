@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description:
       "I'm a product designer who enjoys turning messy ideas into simple, thoughtful experiences.",
     type: 'website',
-    siteName: "Naman's Internet Corners",
+    siteName: "Naman's internet corner",
   },
   twitter: { card: 'summary_large_image' },
 };

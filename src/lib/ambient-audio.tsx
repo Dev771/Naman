@@ -108,10 +108,18 @@ export function AmbientAudioProvider({ children }: { children: React.ReactNode }
     const audio = audioRef.current;
     if (!audio) return;
     clearFade();
-    audio.play().catch(() => {/* autoplay blocked — user gesture pending */ });
+    
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        unlockedRef.current = false;
+      });
+    }
+
     const step = (TARGET_VOLUME / (FADE_DURATION / TICK_MS));
     fadeTimer.current = setInterval(() => {
       if (!audioRef.current) { clearFade(); return; }
+      if (audioRef.current.paused) return; // wait until actually playing
       const next = Math.min(audioRef.current.volume + step, TARGET_VOLUME);
       audioRef.current.volume = next;
       if (next >= TARGET_VOLUME) clearFade();
@@ -146,8 +154,7 @@ export function AmbientAudioProvider({ children }: { children: React.ReactNode }
     wantsPlay.current = anyVisible;
 
     if (anyVisible && !mutedRef.current) {
-      if (unlockedRef.current) fadeIn();
-      // else: will fire once user unlocks (see unlock handler above)
+      fadeIn(); // Try to play; if autoplay is blocked, unlock listener catches it later
     } else {
       fadeOut();
     }
