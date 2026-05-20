@@ -92,51 +92,98 @@ export const caseStudies: CaseStudy[] = [
     id: 'nomad',
     slug: 'nomad',
     href: '/work/nomad',
-    cardTitle: 'The Fintech Powerhouse',
+    cardTitle: 'The student financing solution',
     cardMeta: 'Nomadcredit | 2025–2026',
     cardImage: C('image/upload/v1777222158/Nomadcredit_yufy2w.png'),
     cardBg: '#0072bc',
-    title: 'Nomad Credit',
-    role: 'Product Designer',
+    title: 'Nomad Credit — Modernizing the Student Financing Experience',
+    role: 'Product Designer (End-to-End)',
     timeline: '2025 — Present',
     team: 'Naman Bhateja',
-    skills: ['Product Design', 'Systems', 'Prototyping'],
+    skills: ['UX strategy', 'Product thinking', 'Visual design', 'Responsive design', 'User flows'],
     hero: '/nomad/image-1.png',
-    comingSoon: true,
     intro:
-      'Nomad Credit helps Indian students fund their study-abroad journeys with cross-border loans. The product had earned trust with users but the core flows — application, optimization, dashboard — were stitched together over years of growth and were starting to fray. My job was to redesign these flows as a system, not a stack of screens.',
+      'Redesigned Nomad Credit’s student-facing ecosystem to create a more modern, trustworthy, and conversion-friendly financing experience for international students. The project covered the public website, loan discovery flows, student dashboard, Doc Pilot document upload system, and supporting CRM workflows used by loan managers internally.',
     sections: [
+      {
+        title: 'Overview',
+        blocks: [
+          { type: 'para', html: 'Nomad Credit is a student financing platform designed to help international students discover and apply for education loans, scholarships, and related financial products.' },
+          { type: 'para', html: 'I worked alongside the PM to redesign and modernize the platform’s overall experience while improving operational workflows connected to the loan journey.' },
+          {
+            type: 'list',
+            lead: 'The project expanded across multiple interconnected systems:',
+            items: [
+              'Website revamp',
+              'Student dashboard',
+              'Loan discovery experience',
+              'Scholarship tool',
+              'Application flow',
+              'Doc Pilot document collection system',
+              'Internal CRM improvements'
+            ],
+          },
+          { type: 'para', html: 'Rather than redesigning isolated screens, the goal was to create a more connected ecosystem that balanced trust, clarity, and operational efficiency.' },
+        ],
+      },
       {
         title: 'Problem',
         emphasis: true,
         blocks: [
+          { type: 'para', html: 'The existing platform no longer reflected the scale and maturity of the brand. The experience felt visually outdated, inconsistent across touchpoints, and lacked the clarity expected from modern fintech products.' },
+          { type: 'para', html: 'At the same time, the loan journey itself involved high-trust decision making. Students were expected to compare financial products, understand eligibility, manage documentation, and stay updated throughout the process — often while navigating unfamiliar systems.' },
+          { type: 'para', html: 'The operational side faced similar friction. Document collection was heavily fragmented across WhatsApp and email threads, making it difficult for both students and loan managers to track required paperwork efficiently.' },
           {
-            type: 'para',
-            html: 'Cross-border student lending sits between two competing expectations: the paperwork-heavy reality of cross-currency banking, and the consumer-grade speed students expect after months of research and a tight intake deadline.',
+            type: 'list',
+            lead: 'This created:',
+            items: [
+              'Fragmented communication',
+              'Delayed document collection',
+              'Operational inefficiencies',
+              'Reduced visibility into application progress',
+              'Inconsistent user experiences across platforms'
+            ],
+          },
+          { type: 'para', html: 'The challenge wasn’t only modernizing the interface — it was designing a more connected and trustworthy ecosystem.', bold: true },
+        ],
+      },
+      {
+        title: 'Goals',
+        blocks: [
+          {
+            type: 'list',
+            lead: 'The redesign focused on four primary goals:',
+            items: [
+              'Improve responsiveness across devices',
+              'Modernize the brand perception',
+              'Increase clarity across complex financial workflows',
+              'Create consistency across the ecosystem'
+            ],
           },
           {
             type: 'list',
-            lead: 'Where the existing flow leaked:',
+            lead: 'Operationally, the project also aimed to:',
             items: [
-              'Application steps felt arbitrary — users couldn&rsquo;t see the path ahead',
-              'The dashboard surfaced state but not next-action',
-              'Optimization recommendations were buried, so few students acted on them',
-              'Recovery from errors (missing docs, mismatch) put work back on the user',
+              'Centralize document collection',
+              'Reduce dependency on scattered communication channels',
+              'Streamline follow-up workflows internally'
             ],
           },
         ],
       },
       {
-        title: 'Approach',
+        title: 'Research & Direction',
         blocks: [
+          { type: 'para', html: 'The project began with an audit of the existing platform to identify usability gaps, inconsistencies, and outdated interaction patterns. We then explored competitor and reference platforms across fintech, SaaS, and travel-tech products to define a more modern direction for the experience.' },
           {
-            type: 'para',
-            html: 'Before redesigning anything, I mapped every screen the user saw across the application, optimization, and post-funding journeys, then layered the system actions (KYC checks, partner-bank handoffs, broker calls) underneath.',
+            type: 'list',
+            lead: 'Two key references shaped the design approach:',
+            items: [
+              '<strong>Marketplace-style exploration</strong>: Inspired by platforms like Amazon, the loan discovery experience focused on helping students browse and compare lenders more intuitively instead of forcing them into rigid flows immediately.',
+              '<strong>Trust-focused onboarding</strong>: Platforms like Atlys influenced the way trust signals, guidance, and clarity were introduced throughout the journey.'
+            ],
           },
-          {
-            type: 'para',
-            html: 'The map made it obvious that the friction was structural — the user was carrying state that the system could and should hold.',
-          },
+          { type: 'para', html: 'This combination helped create an experience that balanced discoverability with reassurance.' },
           {
             type: 'image',
             src: '/nomad/image-2.png',
@@ -145,20 +192,69 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: 'Dashboard redesign',
+        title: 'Design Process',
         blocks: [
           {
-            type: 'para',
-            html: 'The dashboard was the home base — a student would return to it dozens of times across a 3-month application window. We rebuilt it around three layers:',
+            type: 'list',
+            lead: 'The workflow remained highly iterative throughout the project:',
+            items: [
+              '<strong>1. Platform Audit</strong>: Reviewed the existing ecosystem to identify friction points, outdated UI patterns, and inconsistencies.',
+              '<strong>2. Competitor Research</strong>: Analyzed modern fintech and marketplace experiences to establish a stronger visual and UX direction.',
+              '<strong>3. High-Fidelity Explorations</strong>: Multiple high-fidelity directions were explored early to evaluate visual tone, information hierarchy, lender discovery patterns, dashboard structures, and interaction clarity.',
+              '<strong>4. Iterations with PM</strong>: Designs evolved through continuous feedback loops with the PM to align business priorities with usability needs.',
+              '<strong>5. Stakeholder Feedback & Handoff</strong>: Finalized flows and interfaces were refined based on stakeholder discussions before developer handoff.'
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Landing Experience',
+        blocks: [
+          { type: 'para', html: 'The landing page redesign focused on transforming the platform into a clearer and more trustworthy discovery experience for students exploring education financing options.' },
+          {
+            type: 'list',
+            lead: 'The redesign introduced:',
+            items: [
+              'Stronger information hierarchy and cleaner modular layouts',
+              'Lender comparison systems and trust-focused sections',
+              'Clearer CTAs and responsive structures'
+            ],
           },
           {
             type: 'list',
-            items: [
-              '<strong>Next action</strong> — one card, with the smallest viable next step',
-              '<strong>Evidence</strong> — a compact view of what the partner bank has and what is outstanding',
-              '<strong>History</strong> — every status change with timestamp, collapsed by default',
-            ],
+            lead: 'The lender comparison cards became a key part of the experience, allowing students to quickly scan:',
+            items: ['Interest rates', 'Repayment information', 'Loan amounts', 'Eligibility indicators', 'Processing timelines'],
           },
+          { type: 'para', html: 'This marketplace-inspired structure helped simplify exploration while maintaining conversion-focused flows.' },
+          {
+            type: 'image',
+            src: '/nomad/image-10.png',
+            caption: 'The new on-ramp: one short questionnaire, then the application opens with everything pre-filled it can pre-fill.',
+          },
+        ],
+      },
+      {
+        title: 'Application Flow',
+        blocks: [
+          { type: 'para', html: 'Applying for education loans can often feel intimidating, especially for students navigating financial systems for the first time.' },
+          {
+            type: 'list',
+            lead: 'The application flow redesign focused on reducing cognitive overload through:',
+            items: ['Simplified progression', 'Cleaner form structures', 'Guided interactions', 'Clearer hierarchy', 'Better responsive layouts'],
+          },
+          { type: 'para', html: 'A major UX challenge involved balancing trust and conversion. Too much friction reduced momentum, while overly aggressive conversion patterns risked reducing credibility. The final experience attempted to create a more reassuring and action-oriented journey.' },
+        ],
+      },
+      {
+        title: 'Student Dashboard',
+        blocks: [
+          { type: 'para', html: 'The student dashboard was redesigned to provide a more centralized and structured experience throughout the financing journey.' },
+          {
+            type: 'list',
+            lead: 'The goal was to reduce ambiguity by giving students:',
+            items: ['Clearer progress visibility', 'Easier navigation', 'Centralized actions', 'Structured task visibility', 'Streamlined document access'],
+          },
+          { type: 'para', html: 'The updated dashboard also created stronger alignment between the student experience and internal operational workflows.' },
           {
             type: 'image',
             src: '/nomad/image-3.png',
@@ -169,56 +265,74 @@ export const caseStudies: CaseStudy[] = [
             src: '/nomad/image-4.png',
             caption: 'Status timeline: collapsed by default, expandable for full history.',
           },
-        ],
-      },
-      {
-        title: 'Optimization flow',
-        blocks: [
-          {
-            type: 'para',
-            html: 'Optimization — re-rating, co-applicant changes, course substitution — used to live in a settings tab almost no student opened. We moved it onto the dashboard as a contextual card, only when the system had a real recommendation, and made the change preview the most prominent piece of UI on the screen.',
-          },
           {
             type: 'image',
             src: '/nomad/image-5.png',
             caption: 'Optimization moved from a buried tab to a card on the dashboard.',
           },
-          {
-            type: 'image',
-            src: '/nomad/image-6.png',
-            caption: 'Change preview shows old vs. new in a single comparison view.',
-          },
-          {
-            type: 'para',
-            html: 'Acting on a recommendation went from a 7-screen flow to two clicks plus a confirmation.',
-          },
         ],
       },
       {
-        title: 'Onboarding',
+        title: 'Doc Pilot System',
         blocks: [
+          { type: 'para', html: 'One of the biggest operational challenges involved document collection. Previously, required loan documents were often shared across fragmented communication channels such as WhatsApp and email. This created inefficiencies for both students and loan managers while reducing visibility into application progress.' },
+          { type: 'para', html: 'The Doc Pilot system was designed to centralize this workflow into a single structured experience. Students could securely upload required documents through guided flows while loan managers could trigger magic links directly from the CRM. These links could then be shared through email or WhatsApp depending on the student’s preferred communication channel.' },
           {
-            type: 'para',
-            html: 'First-time visitors used to land directly inside the application. We added a short pre-application step that captured intent and surfaced two outputs: a clear eligibility signal, and an application screen that pre-filled everything we already knew. Time-to-first-completed-step dropped meaningfully in early usability tests.',
+            type: 'list',
+            lead: 'The system aimed to:',
+            items: [
+              'Reduce fragmented communication and improve organization',
+              'Centralize uploads and speed up document collection',
+              'Improve operational visibility',
+              'Increase trust through platform-based uploads'
+            ],
           },
+          { type: 'para', html: 'Rather than forcing students away from familiar communication habits, the workflow integrated with them more naturally. This became one of the most operationally impactful parts of the redesign.' },
+        ],
+      },
+      {
+        title: 'Internal CRM Improvements',
+        blocks: [
+          { type: 'para', html: 'In addition to the student-facing ecosystem, smaller workflow improvements were introduced across the internal CRM experience.' },
           {
-            type: 'image',
-            src: '/nomad/image-10.png',
-            caption: 'The new on-ramp: one short questionnaire, then the application opens with everything pre-filled it can pre-fill.',
+            type: 'list',
+            lead: 'These updates included:',
+            items: [
+              'One-click follow-ups',
+              'Task management improvements',
+              'Communication triggers',
+              'Magic-link based workflows',
+              'Operational workflow optimization'
+            ],
+          },
+          { type: 'para', html: 'The goal was to simplify repetitive actions for loan managers while improving communication efficiency with students.' },
+        ],
+      },
+      {
+        title: 'Impact',
+        blocks: [
+          { type: 'para', html: 'The redesign helped establish a more modern and trustworthy digital presence for Nomad Credit while improving workflow clarity across both student and operational experiences.' },
+          {
+            type: 'list',
+            lead: 'Key Outcomes:',
+            items: [
+              'Faster document collection workflows',
+              'Reduced workflow fragmentation across communication channels',
+              'Improved centralized visibility for loan managers',
+              'Better responsiveness across devices',
+              'More consistent UX across products',
+              'Positive stakeholder feedback during rollout',
+              'Increased trust in platform-based document uploads'
+            ],
           },
         ],
       },
       {
         title: 'Reflection',
         blocks: [
-          {
-            type: 'para',
-            html: 'The hardest part of this project was resisting the urge to redesign every screen at once. The wins came from picking three flows — dashboard, optimization, onboarding — and making sure the underlying system worked the way the screens implied it did.',
-          },
-          {
-            type: 'para',
-            html: 'If I take this further, the next push is on the post-funding journey: visa, disbursal tracking, repayment ramp. Same approach — name the next action, show the evidence, hide the rest until the user wants to see it.',
-          },
+          { type: 'para', html: 'This project reinforced how important trust is within financial experiences.' },
+          { type: 'para', html: 'Students were not simply interacting with forms — they were making high-stakes decisions connected to their education and future. Designing for clarity, reassurance, and operational simplicity became just as important as visual modernization.' },
+          { type: 'para', html: 'It also highlighted the importance of designing systems rather than isolated screens. The most meaningful improvements emerged when student workflows, communication channels, and internal operations were treated as connected parts of the same ecosystem.' },
         ],
       },
     ],

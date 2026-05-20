@@ -1,0 +1,256 @@
+Nomad Credit — Modernizing the Student Financing Experience
+TL;DR
+
+Redesigned Nomad Credit’s student-facing ecosystem to create a more modern, trustworthy, and conversion-friendly financing experience for international students.
+
+The project covered the public website, loan discovery flows, student dashboard, Doc Pilot document upload system, and supporting CRM workflows used by loan managers internally.
+
+The redesign focused on improving clarity across complex financial journeys while centralizing fragmented document collection workflows previously spread across WhatsApp and email.
+
+Outcomes
+Reduced friction in document collection workflows
+Faster document submission turnaround through centralized uploads
+Improved responsiveness across devices
+More consistent UX across student and operational experiences
+Positive stakeholder feedback during rollout
+Improved trust through guided, platform-based workflows
+My Role
+
+Product Designer (End-to-End)
+
+Responsibilities
+UX strategy
+Product thinking
+Visual design
+Responsive design
+User flows
+PM collaboration
+Stakeholder iterations
+Developer handoff
+Overview
+
+Nomad Credit is a student financing platform designed to help international students discover and apply for education loans, scholarships, and related financial products.
+
+I worked alongside the PM to redesign and modernize the platform’s overall experience while improving operational workflows connected to the loan journey.
+
+The project expanded across multiple interconnected systems:
+
+Website revamp
+Student dashboard
+Loan discovery experience
+Scholarship tool
+Application flow
+Doc Pilot document collection system
+Internal CRM improvements
+
+Rather than redesigning isolated screens, the goal was to create a more connected ecosystem that balanced trust, clarity, and operational efficiency.
+
+Problem
+
+The existing platform no longer reflected the scale and maturity of the brand. The experience felt visually outdated, inconsistent across touchpoints, and lacked the clarity expected from modern fintech products.
+
+At the same time, the loan journey itself involved high-trust decision making. Students were expected to compare financial products, understand eligibility, manage documentation, and stay updated throughout the process — often while navigating unfamiliar systems.
+
+The operational side faced similar friction.
+
+Document collection was heavily fragmented across WhatsApp and email threads, making it difficult for both students and loan managers to track required paperwork efficiently.
+
+This created:
+
+fragmented communication
+delayed document collection
+operational inefficiencies
+reduced visibility into application progress
+inconsistent user experiences across platforms
+
+The challenge wasn’t only modernizing the interface — it was designing a more connected and trustworthy ecosystem.
+
+Goals
+
+The redesign focused on four primary goals:
+
+Improve responsiveness across devices
+Modernize the brand perception
+Increase clarity across complex financial workflows
+Create consistency across the ecosystem
+
+Operationally, the project also aimed to:
+
+centralize document collection
+reduce dependency on scattered communication channels
+streamline follow-up workflows internally
+Research & Direction
+
+The project began with an audit of the existing platform to identify usability gaps, inconsistencies, and outdated interaction patterns.
+
+We then explored competitor and reference platforms across fintech, SaaS, and travel-tech products to define a more modern direction for the experience.
+
+Two key references shaped the design approach:
+
+Marketplace-style exploration
+
+Inspired by platforms like Amazon, the loan discovery experience focused on helping students browse and compare lenders more intuitively instead of forcing them into rigid flows immediately.
+
+Trust-focused onboarding
+
+Platforms like Atlys influenced the way trust signals, guidance, and clarity were introduced throughout the journey.
+
+This combination helped create an experience that balanced discoverability with reassurance.
+
+Design Process
+
+The workflow remained highly iterative throughout the project.
+
+1. Platform Audit
+
+Reviewed the existing ecosystem to identify friction points, outdated UI patterns, and inconsistencies.
+
+2. Competitor Research
+
+Analyzed modern fintech and marketplace experiences to establish a stronger visual and UX direction.
+
+3. High-Fidelity Explorations
+
+Multiple high-fidelity directions were explored early to evaluate:
+
+visual tone
+information hierarchy
+lender discovery patterns
+dashboard structures
+interaction clarity
+4. Iterations with PM
+
+Designs evolved through continuous feedback loops with the PM to align business priorities with usability needs.
+
+5. Stakeholder Feedback & Handoff
+
+Finalized flows and interfaces were refined based on stakeholder discussions before developer handoff.
+
+Landing Experience
+
+The landing page redesign focused on transforming the platform into a clearer and more trustworthy discovery experience for students exploring education financing options.
+
+The redesign introduced:
+
+stronger information hierarchy
+cleaner modular layouts
+lender comparison systems
+trust-focused sections
+clearer CTAs
+responsive structures
+
+The lender comparison cards became a key part of the experience, allowing students to quickly scan:
+
+interest rates
+repayment information
+loan amounts
+eligibility indicators
+processing timelines
+
+This marketplace-inspired structure helped simplify exploration while maintaining conversion-focused flows.
+
+Improvements
+Reduced visual clutter across the landing experience
+Improved lender discoverability
+Better mobile responsiveness
+More structured product browsing experience
+Application Flow
+
+Applying for education loans can often feel intimidating, especially for students navigating financial systems for the first time.
+
+The application flow redesign focused on reducing cognitive overload through:
+
+simplified progression
+cleaner form structures
+guided interactions
+clearer hierarchy
+better responsive layouts
+
+A major UX challenge involved balancing trust and conversion.
+
+Too much friction reduced momentum, while overly aggressive conversion patterns risked reducing credibility. The final experience attempted to create a more reassuring and action-oriented journey.
+
+Focus Areas
+Progressive information disclosure
+Better readability
+Reduced ambiguity
+Clearer step-by-step guidance
+Student Dashboard
+
+The student dashboard was redesigned to provide a more centralized and structured experience throughout the financing journey.
+
+The goal was to reduce ambiguity by giving students:
+
+clearer progress visibility
+easier navigation
+centralized actions
+structured task visibility
+streamlined document access
+
+The updated dashboard also created stronger alignment between the student experience and internal operational workflows.
+
+Doc Pilot System
+
+One of the biggest operational challenges involved document collection.
+
+Previously, required loan documents were often shared across fragmented communication channels such as WhatsApp and email. This created inefficiencies for both students and loan managers while reducing visibility into application progress.
+
+The Doc Pilot system was designed to centralize this workflow into a single structured experience.
+
+Students could securely upload required documents through guided flows while loan managers could trigger magic links directly from the CRM. These links could then be shared through email or WhatsApp depending on the student’s preferred communication channel.
+
+The system aimed to:
+
+reduce fragmented communication
+improve organization
+centralize uploads
+speed up document collection
+improve operational visibility
+increase trust through platform-based uploads
+Workflow Improvements
+Reduced dependency on manual document tracking
+Faster document submission turnaround
+Better visibility into pending uploads
+More structured follow-up workflows for loan managers
+
+Rather than forcing students away from familiar communication habits, the workflow integrated with them more naturally.
+
+This became one of the most operationally impactful parts of the redesign.
+
+Internal CRM Improvements
+
+In addition to the student-facing ecosystem, smaller workflow improvements were introduced across the internal CRM experience.
+
+These updates included:
+
+one-click follow-ups
+task management improvements
+communication triggers
+magic-link based workflows
+operational workflow optimization
+
+The goal was to simplify repetitive actions for loan managers while improving communication efficiency with students.
+
+Impact
+
+The redesign helped establish a more modern and trustworthy digital presence for Nomad Credit while improving workflow clarity across both student and operational experiences.
+
+Key Outcomes
+Faster document collection workflows
+Reduced workflow fragmentation across communication channels
+Improved centralized visibility for loan managers
+Better responsiveness across devices
+More consistent UX across products
+Positive stakeholder feedback during rollout
+Increased trust in platform-based document uploads
+Product Impact
+
+The redesign also helped transition the platform from a collection of disconnected flows into a more cohesive ecosystem built around guidance, clarity, and operational efficiency.
+
+Reflection
+
+This project reinforced how important trust is within financial experiences.
+
+Students were not simply interacting with forms — they were making high-stakes decisions connected to their education and future. Designing for clarity, reassurance, and operational simplicity became just as important as visual modernization.
+
+It also highlighted the importance of designing systems rather than isolated screens. The most meaningful improvements emerged when student workflows, communication channels, and internal operations were treated as connected parts of the same ecosystem.
