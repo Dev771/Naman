@@ -1,4 +1,4 @@
-import { signIn } from "@/auth";
+import { loginWithGoogle } from "./auth-actions";
 import { Lock, ArrowRight } from "lucide-react";
 
 export function OAuthGate() {
@@ -19,10 +19,7 @@ export function OAuthGate() {
         </div>
 
         <form
-          action={async () => {
-            "use server";
-            await signIn("google", { redirectTo: "/admin" });
-          }}
+          action={loginWithGoogle}
           className="mt-8"
         >
           <button
