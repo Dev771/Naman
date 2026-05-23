@@ -20,7 +20,8 @@ import {
   Calendar,
   Layers,
   ChevronRight,
-  AlertCircle
+  AlertCircle,
+  MapPin
 } from 'lucide-react';
 
 interface SummaryMetric {
@@ -40,6 +41,7 @@ interface AnalyticsData {
   mostViewedStudies: Array<{ title: string; slug: string; views: number }>;
   devices: Array<{ category: string; percentage: number; count: number }>;
   referrers: Array<{ source: string; percentage: number; count: number }>;
+  locations: Array<{ location: string; count: number }>;
   recentActivity: Array<{ time: string; event: string; detail: string }>;
 }
 
@@ -414,6 +416,30 @@ export function AdminDashboard() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* VISITOR LOCATIONS */}
+          <div className="rounded-[12px] border border-[rgba(186,169,148,0.25)] bg-[#fffefc] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
+            <div>
+              <h3 className="font-sans text-[16px] font-bold tracking-tight text-ink">Visitor Locations</h3>
+              <p className="font-sans text-[13px] text-ink-subtle">Geographic distribution of your audience</p>
+            </div>
+
+            <div className="mt-6 space-y-4 font-sans text-[13.5px]">
+              {data.locations.length > 0 ? data.locations.slice(0, 5).map((loc, idx) => (
+                <div key={idx} className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <MapPin size={15} className="text-ink-muted/60" />
+                    <span className="font-medium text-ink">{loc.location}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="font-semibold text-ink-muted">{loc.count} visitors</span>
+                  </div>
+                </div>
+              )) : (
+                <div className="text-ink-subtle text-[13px]">No location data available yet.</div>
+              )}
             </div>
           </div>
 

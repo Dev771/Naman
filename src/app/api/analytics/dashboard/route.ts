@@ -57,7 +57,7 @@ export async function GET() {
       return response.json();
     };
 
-    const [trendsReport, ctaReport, studiesReport, deviceReport, referrerReport, realtimeReport] = await Promise.all([
+    const [trendsReport, ctaReport, studiesReport, deviceReport, referrerReport, realtimeReport, geoReport] = await Promise.all([
       // Report 1: Trends & Summary (views & active users) over the last 30 days
       runReport({
         dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
@@ -110,6 +110,12 @@ export async function GET() {
       runRealtimeReport({
         dimensions: [{ name: 'eventName' }, { name: 'minutesAgo' }, { name: 'city' }, { name: 'country' }],
         metrics: [{ name: 'eventCount' }]
+      }),
+      // Report 7: Geographic locations
+      runReport({
+        dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+        dimensions: [{ name: 'city' }, { name: 'country' }],
+        metrics: [{ name: 'activeUsers' }],
       }),
     ]);
 
@@ -258,6 +264,29 @@ export async function GET() {
       .sort((a: any, b: any) => a.minutesAgo - b.minutesAgo)
       .slice(0, 15);
 
+    // Parse Geographic locations
+    const rawLocations = (geoReport?.rows || []).map((row: any) => {
+      const city = row.dimensionValues?.[0]?.value || '';
+      const country = row.dimensionValues?.[1]?.value || '';
+      const count = parseInt(row.metricValues?.[0]?.value || '0', 10);
+      
+      const location = [city, country].filter(c => c && c !== '(not set)').join(', ');
+      return { location: location || 'Unknown', count };
+    });
+
+    const locationGroupsMap = new Map();
+    rawLocations.forEach((loc: any) => {
+      if (loc.location !== 'Unknown') {
+        const existing = locationGroupsMap.get(loc.location) || 0;
+        locationGroupsMap.set(loc.location, existing + loc.count);
+      }
+    });
+
+    const locationsList = Array.from(locationGroupsMap.entries()).map(([location, count]) => ({
+      location,
+      count
+    })).sort((a: any, b: any) => b.count - a.count).slice(0, 10);
+
     // Default message if no live traffic
     const recentActivity = realtimeActivityList.length > 0 
       ? realtimeActivityList 
@@ -275,6 +304,7 @@ export async function GET() {
       mostViewedStudies: mostViewedStudiesList,
       devices: devicesList,
       referrers: referrersList,
+      locations: locationsList,
       recentActivity: recentActivity
     };
 
