@@ -19,6 +19,7 @@ import { trackEvent } from '@/lib/analytics';
 const links = [
   { href: '/work', label: 'Selected Work' },
   { href: '/about', label: 'About me' },
+  { href: 'https://cal.com/naman-bhateja-qtmy0j', label: 'Hire me' },
 ];
 
 export function Nav() {
@@ -78,11 +79,14 @@ export function Nav() {
             <ul className="pointer-events-auto flex items-center gap-8 font-sans text-[15px] font-medium leading-[24px] md:gap-10 md:text-[16px]">
               {links.map((l) => {
                 const isActive = path === l.href || path?.startsWith(`${l.href}/`);
+                const isExternal = l.href.startsWith('http');
                 return (
                   <li key={l.href}>
                     <Link
                       href={l.href}
                       data-active={isActive ? 'true' : 'false'}
+                      target={isExternal ? '_blank' : undefined}
+                      rel={isExternal ? 'noopener noreferrer' : undefined}
                       onClick={() => trackEvent('cta_click_navbar', { name: l.label, href: l.href, location: 'Navbar Desktop' })}
                       className={`nav-underline transition-colors duration-200 hover:text-ink ${
                         isActive ? 'text-ink' : 'text-nav-inactive'
@@ -127,10 +131,13 @@ export function Nav() {
           <ul className="flex flex-col items-end gap-3 font-sans text-[16px] font-medium leading-[24px] text-[#979785]">
             {links.map((l) => {
               const isActive = path === l.href || path?.startsWith(`${l.href}/`);
+              const isExternal = l.href.startsWith('http');
               return (
                 <li key={l.href} className="flex h-[40px] items-center justify-end">
                   <Link
                     href={l.href}
+                    target={isExternal ? '_blank' : undefined}
+                    rel={isExternal ? 'noopener noreferrer' : undefined}
                     onClick={() => {
                       setMenuOpen(false);
                       trackEvent('cta_click_navbar', { name: l.label, href: l.href, location: 'Navbar Mobile' });
