@@ -85,6 +85,7 @@ export function Footer() {
   return (
     <footer
       ref={footerRef}
+      data-cursor-white="true"
       className="fixed inset-x-0 bottom-0 z-0 bg-[#2f5bff] text-ink-footer overflow-hidden"
     >
       {/* Decorative Waves */}
@@ -141,9 +142,9 @@ export function Footer() {
                 <div className="text-[#fffefc] text-[16px] flex flex-wrap items-center gap-[20px] font-normal leading-[14.4px] mt-1">
                   <span className="font-['Inter']">Made by official DIET Coke paguls 💅</span>
                   <div className="flex gap-[4px] items-center">
-                    <span className="italic underline decoration-solid hover:opacity-80 transition-opacity cursor-default">Dev G.</span>
+                    <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300 cursor-default">Dev G.</span>
                     <span className="font-['Inter']">&</span>
-                    <span className="italic underline decoration-solid hover:opacity-80 transition-opacity cursor-default">Naman B.</span>
+                    <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300 cursor-default">Naman B.</span>
                   </div>
                 </div>
               </div>
@@ -182,11 +183,11 @@ export function Footer() {
                               location: 'Footer Desktop',
                             });
                           }}
-                          className="group relative inline-flex items-center gap-1.5 transition-all hover:opacity-80"
+                          className="group relative inline-flex items-center gap-1.5 transition-all duration-300 hover:opacity-100 hover:-translate-y-[2px] hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] opacity-90"
                         >
                           <span className="relative">
                             {item.label}
-                            <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-[#fffefc]/50 transition-all duration-300 group-hover:w-full"></span>
+                            <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-[#fffefc] shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300 group-hover:w-full"></span>
                           </span>
                           {'external' in item && item.external && (
                             <ArrowUpRight
@@ -247,11 +248,11 @@ export function Footer() {
                               location: 'Footer Mobile',
                             });
                           }}
-                          className="group relative inline-flex items-center gap-1.5 transition-all hover:opacity-80"
+                          className="group relative inline-flex items-center gap-1.5 transition-all duration-300 hover:opacity-100 hover:-translate-y-[2px] hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] opacity-90"
                         >
                           <span className="relative">
                             {item.label}
-                            <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-[#fffefc]/50 transition-all duration-300 group-hover:w-full"></span>
+                            <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-[#fffefc] shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300 group-hover:w-full"></span>
                           </span>
                           {'external' in item && item.external && (
                             <ArrowUpRight
@@ -282,9 +283,9 @@ export function Footer() {
               <div className="text-[#fffefc] text-[16px] flex flex-col items-center gap-[20px] font-normal leading-[14.4px] mt-1 text-center">
                 <span className="font-['Inter']">Made by official DIET Coke paguls 💅</span>
                 <div className="flex gap-[4px] items-center">
-                  <span className="italic underline decoration-solid">Dev G.</span>
+                  <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300">Dev G.</span>
                   <span className="font-['Inter']">&</span>
-                  <span className="italic underline decoration-solid">Naman B.</span>
+                  <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300">Naman B.</span>
                 </div>
               </div>
             </div>

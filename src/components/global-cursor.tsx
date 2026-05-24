@@ -9,6 +9,7 @@ export function GlobalCursor() {
   const [isInteractive, setIsInteractive] = useState(false);
   const [isTransparent, setIsTransparent] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [isWhite, setIsWhite] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
 
   // Mouse coordinate refs
@@ -76,6 +77,9 @@ export function GlobalCursor() {
 
       const isHiddenElement = target.closest('.cs-card-link');
       setIsHidden(!!isHiddenElement);
+
+      const isWhiteElement = target.closest('[data-cursor-white="true"]');
+      setIsWhite(!!isWhiteElement);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -99,10 +103,10 @@ export function GlobalCursor() {
       <div 
         className={`flex items-center justify-center -translate-x-1/2 -translate-y-1/2 rounded-full border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
           ${isInteractive 
-            ? `h-20 w-20 border-[#2f5bff]/60 bg-transparent` 
+            ? `h-20 w-20 bg-transparent ${isWhite ? 'border-white/80' : 'border-[#2f5bff]/60'}` 
             : isTransparent
-              ? `h-24 w-24 border-[#2f5bff]/40 bg-transparent`
-              : `h-12 w-12 border-[#2f5bff]/40 bg-transparent`
+              ? `h-24 w-24 bg-transparent ${isWhite ? 'border-white/60' : 'border-[#2f5bff]/40'}`
+              : `h-12 w-12 bg-transparent ${isWhite ? 'border-white/60' : 'border-[#2f5bff]/40'}`
           }
         `}
       />
