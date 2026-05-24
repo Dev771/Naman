@@ -14,9 +14,7 @@
  */
 'use client';
 
-import { useRef } from 'react';
-import Image from 'next/image';
-import { home } from '@/lib/assets';
+import { useRef, useState, useEffect } from 'react';
 import { FileText } from 'lucide-react';
 import { useHeroAudio } from '@/hooks/use-hero-audio';
 import { PhotoFrame } from './photo-frame';
@@ -34,30 +32,110 @@ export function Hero() {
   useHeroAudio(sectionRef, 'home-hero');
   const { onSectionEnter, onSectionLeave } = useHomeContext();
 
+  const [isHovering, setIsHovering] = useState(false);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const mouse = useRef({ x: 0, y: 0 });
+  const cursor = useRef({ x: 0, y: 0 });
+  const holeOpacity = useRef(1);
+  const targetHoleOpacity = useRef(1);
+
+  useEffect(() => {
+    let animationFrameId: number;
+    const speed = 0.25; // Synchronized with global cursor speed
+
+    const render = () => {
+      cursor.current.x += (mouse.current.x - cursor.current.x) * speed;
+      cursor.current.y += (mouse.current.y - cursor.current.y) * speed;
+
+      holeOpacity.current += (targetHoleOpacity.current - holeOpacity.current) * speed * 0.4;
+
+      if (overlayRef.current) {
+        overlayRef.current.style.setProperty('--mouse-x', `${cursor.current.x}px`);
+        overlayRef.current.style.setProperty('--mouse-y', `${cursor.current.y}px`);
+        overlayRef.current.style.setProperty('--hole-opacity', holeOpacity.current.toString());
+      }
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (sectionRef.current) {
+      const rect = sectionRef.current.getBoundingClientRect();
+      mouse.current.x = e.clientX - rect.left;
+      mouse.current.y = e.clientY - rect.top;
+    }
+  };
+
+  const handleMouseEnter = (e: React.MouseEvent) => {
+    setIsHovering(true);
+    targetHoleOpacity.current = 0;
+    if (sectionRef.current) {
+      const rect = sectionRef.current.getBoundingClientRect();
+      const localX = e.clientX - rect.left;
+      const localY = e.clientY - rect.top;
+      mouse.current.x = localX;
+      mouse.current.y = localY;
+      cursor.current.x = localX;
+      cursor.current.y = localY;
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    targetHoleOpacity.current = 1;
+  };
+
   return (
-    <section ref={sectionRef} className="relative -mt-[72px] w-full overflow-hidden pb-8">
-      {/* Full-bleed background image — Next.js Image handles responsive srcset */}
-      <Image
-        src={home.heroBg}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center"
+    <section 
+      ref={sectionRef} 
+      data-cursor-transparent="true"
+      className={`relative -mt-[72px] w-full overflow-hidden pb-8 ${isHovering ? 'cursor-none' : ''}`}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Full-bleed background video (always 100% opacity) */}
+      <video
+        ref={(el) => {
+          if (el) el.playbackRate = 0.75;
+        }}
+        src="https://res.cloudinary.com/duqqte7b4/video/upload/v1779608900/Ceate_video__No_add_zoom_in_an_kiwvzf.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 z-0 h-full w-full object-cover object-center"
         aria-hidden="true"
       />
 
-      {/* Layer 1 — softer top readability scrim to make mountain illustration more integrated */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-[rgba(253,251,248,0.50)] via-[rgba(253,251,248,0.10)] to-transparent"
-      />
+      {/* Wrapper for all overlays so the spotlight mask cuts through ALL of them, revealing 100% pure video underneath */}
+      <div 
+        ref={overlayRef}
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full transition-opacity duration-300"
+        style={{
+          WebkitMaskImage: `radial-gradient(circle 48px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,0,0,var(--hole-opacity, 1)) 0%, rgba(0,0,0,var(--hole-opacity, 1)) 98%, rgba(0,0,0,1) 100%)`,
+          maskImage: `radial-gradient(circle 48px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,0,0,var(--hole-opacity, 1)) 0%, rgba(0,0,0,var(--hole-opacity, 1)) 98%, rgba(0,0,0,1) 100%)`
+        }}
+      >
+        {/* Dim base overlay */}
+        <div className="absolute inset-0 h-full w-full bg-[#fdfbf8]/50" />
 
-      {/* Layer 2 — cinematic bottom fade */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-[#fdfbf8] via-[rgba(253,251,248,0.75)] to-transparent"
-      />
+        {/* Layer 1 — softer top readability scrim to make mountain illustration more integrated */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-[rgba(253,251,248,0.50)] via-[rgba(253,251,248,0.10)] to-transparent"
+        />
+
+        {/* Layer 2 — cinematic bottom fade */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-[#fdfbf8] via-[rgba(253,251,248,0.75)] to-transparent"
+        />
+      </div>
 
       {/* Content — increased top spacing and vertical rhythm */}
       <div className="relative z-10 mx-auto flex max-w-page flex-col items-center gap-[40px] px-4 pb-[64px] pt-[88px] text-center md:gap-8 md:px-0 md:pb-16 md:pt-[152px]">

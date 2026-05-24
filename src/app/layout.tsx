@@ -7,6 +7,7 @@ import { HomeProvider } from '@/components/home/home-context';
 import { AmbientAudioProvider } from '@/lib/ambient-audio';
 import Script from 'next/script';
 import { AnalyticsTracker } from '@/components/analytics-tracker';
+import { GlobalCursor } from '@/components/global-cursor';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://namanbhateja.com'),
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={fontVars}>
       <body className="bg-cream font-sans text-ink">
+        <GlobalCursor />
         {/* Google Analytics 4 Script Integration */}
         {GA_MEASUREMENT_ID && (
           <>

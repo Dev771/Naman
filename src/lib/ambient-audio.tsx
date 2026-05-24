@@ -65,25 +65,29 @@ export function AmbientAudioProvider({ children }: { children: React.ReactNode }
     return () => { audio.pause(); audio.src = ''; };
   }, []);
 
-  /* ── unlock on first user gesture ──────────────────────────────────── */
+  /* ── unlock on any user gesture ──────────────────────────────────── */
   useEffect(() => {
     const unlock = () => {
-      if (unlockedRef.current) return;
+      if (unlockedRef.current && !audioRef.current?.paused) return;
       unlockedRef.current = true;
-      // If a hero was already visible before the gesture, start playing now
-      if (wantsPlay.current && !mutedRef.current && !document.hidden) {
+      // If a hero was already visible, try playing now
+      if (wantsPlay.current && !mutedRef.current && !document.hidden && audioRef.current?.paused) {
         fadeIn();
       }
     };
-    window.addEventListener('click', unlock, { once: true });
-    window.addEventListener('keydown', unlock, { once: true });
-    window.addEventListener('touchstart', unlock, { once: true, passive: true });
+    
+    // Listen to many events so that the moment the browser considers the user to have interacted, we play.
+    window.addEventListener('click', unlock);
+    window.addEventListener('keydown', unlock);
+    window.addEventListener('touchstart', unlock, { passive: true });
+    window.addEventListener('mousemove', unlock);
+    window.addEventListener('scroll', unlock);
     
     const handleVisibilityChange = () => {
       if (document.hidden) {
         fadeOut();
       } else {
-        if (wantsPlay.current && !mutedRef.current && unlockedRef.current) {
+        if (wantsPlay.current && !mutedRef.current) {
           fadeIn();
         }
       }
@@ -94,6 +98,8 @@ export function AmbientAudioProvider({ children }: { children: React.ReactNode }
       window.removeEventListener('click', unlock);
       window.removeEventListener('keydown', unlock);
       window.removeEventListener('touchstart', unlock);
+      window.removeEventListener('mousemove', unlock);
+      window.removeEventListener('scroll', unlock);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -107,11 +113,14 @@ export function AmbientAudioProvider({ children }: { children: React.ReactNode }
   const fadeIn = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
+    if (!audio.paused && fadeTimer.current) return; // already fading in or playing
+    
     clearFade();
     
     const playPromise = audio.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
+        // Autoplay blocked by browser. We'll try again on the next user interaction.
         unlockedRef.current = false;
       });
     }
