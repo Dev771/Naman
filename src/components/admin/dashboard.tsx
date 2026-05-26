@@ -60,7 +60,7 @@ export function AdminDashboard() {
     try {
       const res = await fetch('/api/analytics/dashboard');
       if (res.status === 401) {
-        router.refresh();
+        await signOut({ callbackUrl: '/admin?error=SessionExpired' });
         return;
       }
       const dashboardData = await res.json();

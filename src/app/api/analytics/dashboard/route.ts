@@ -311,6 +311,12 @@ export async function GET() {
     return NextResponse.json(parsedData);
   } catch (error: any) {
     console.error('Google Analytics Data API OAuth request failed:', error);
+    
+    // If Google Analytics rejects the access token, return 401 so the frontend can trigger a re-login
+    if (error.message && error.message.includes('401')) {
+      return NextResponse.json({ error: 'OAuth Access Token Expired' }, { status: 401 });
+    }
+    
     return NextResponse.json({ error: error.message || 'Failed to fetch analytics data' }, { status: 500 });
   }
 }
