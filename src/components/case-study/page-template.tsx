@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { SmartImage } from '@/components/smart-image';
 import { CaseStudyToc } from './case-study-toc';
+import { DynamicIslandToc } from './dynamic-island-toc';
 import { Blocks } from './case-study-blocks';
 import type { CaseStudy } from '@/lib/case-studies';
 import { ArrowLeft } from 'lucide-react';
@@ -64,6 +65,7 @@ export function CaseStudyTemplate({ cs }: { cs: CaseStudy }) {
 
         <div className="flex gap-10 md:gap-16 lg:gap-24">
           <CaseStudyToc items={tocItems} title={cs.title} />
+          <DynamicIslandToc items={tocItems} />
 
           <article className="flex min-w-0 flex-1 flex-col gap-10 md:gap-12">
             {/* TL;DR section */}
