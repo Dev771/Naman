@@ -69,7 +69,7 @@ export function GlobalCursor() {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       
-      const isInteractiveElement = target.closest('a, button, [role="button"], input, select, textarea');
+      const isInteractiveElement = target.closest('a, button, [role="button"], input, select, textarea, li.group');
       setIsInteractive(!!isInteractiveElement);
 
       const isTransparentElement = target.closest('[data-cursor-transparent="true"]');
@@ -101,12 +101,14 @@ export function GlobalCursor() {
       style={{ willChange: 'transform' }}
     >
       <div 
-        className={`flex items-center justify-center -translate-x-1/2 -translate-y-1/2 rounded-full border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+        className={`flex items-center justify-center -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
           ${isInteractive 
-            ? `h-20 w-20 bg-transparent ${isWhite ? 'border-white/80' : 'border-[#2f5bff]/60'}` 
+            ? isTransparent
+              ? `h-20 w-20 border bg-transparent ${isWhite ? 'border-white/80' : 'border-[#2f5bff]/60'}`
+              : `h-12 w-12 ${isWhite ? 'bg-white/50' : 'bg-[#2f5bff]/50'}` // Translucent on hover, normal size
             : isTransparent
-              ? `h-24 w-24 bg-transparent ${isWhite ? 'border-white/60' : 'border-[#2f5bff]/40'}`
-              : `h-12 w-12 bg-transparent ${isWhite ? 'border-white/60' : 'border-[#2f5bff]/40'}`
+              ? `h-24 w-24 border bg-transparent ${isWhite ? 'border-white/60' : 'border-[#2f5bff]/40'}`
+              : `h-12 w-12 ${isWhite ? 'bg-white' : 'bg-[#2f5bff]'}` // Solid normal size
           }
         `}
       />

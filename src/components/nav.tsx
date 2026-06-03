@@ -18,8 +18,8 @@ import { trackEvent } from '@/lib/analytics';
  */
 const links = [
   { href: '/work', label: 'Selected Work' },
-  { href: '/about', label: 'About me' },
-  { href: 'https://cal.com/naman-bhateja-qtmy0j', label: 'Hire me' },
+  { href: '/about', label: 'About Me' },
+  { href: 'https://cal.com/naman-bhateja-qtmy0j', label: 'Hire Me' },
 ];
 
 export function Nav() {

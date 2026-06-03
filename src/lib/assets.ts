@@ -7,7 +7,11 @@
  * derived from the `Identity-2026` file (canvas 450:1914 "Naman Final").
  */
 
-const C = (path: string) => `https://res.cloudinary.com/duqqte7b4/${path}`;
+const C = (path: string) => {
+  // Inject f_auto,q_auto right after 'image/upload/' or 'video/upload/' to optimize delivery
+  const optimizedPath = path.replace(/(image\/upload\/|video\/upload\/)/, '$1f_auto,q_auto/');
+  return `https://res.cloudinary.com/duqqte7b4/${optimizedPath}`;
+};
 
 export const home = {
   // Figma 479:2457 (Top Bar logo) — wordmark version. The small "न" icon
@@ -148,9 +152,9 @@ export const about = {
     { id: 3, src: C('image/upload/v1777222159/I3_txwsud.png') },
     { id: 4, src: C('image/upload/v1777222160/I4_nfed2v.png') },
     { id: 5, src: C('image/upload/v1777222161/I5_zadikn.png') },
-    { id: 6, src: C('image/upload/v1777222160/I6_izqmxl.png') },
-    { id: 7, src: C('image/upload/v1777222157/I7_rjd4nd.png') },
-    { id: 8, src: C('image/upload/v1777222158/I8_bsyxk8.png') },
+    { id: 6, src: C('image/upload/v1777222157/I7_rjd4nd.png') },
+    { id: 7, src: C('image/upload/v1777222158/I8_bsyxk8.png') },
+    { id: 8, src: C('image/upload/v1777222160/I6_izqmxl.png') },
     { id: 9, src: C('image/upload/v1777222159/I9_vv9zci.png') },
     { id: 10, src: C('image/upload/v1777222160/I10_nuiy8c.png') },
     { id: 11, src: C('image/upload/v1777222156/I11_fjejcg.png') },

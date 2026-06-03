@@ -61,19 +61,6 @@ export function UiGrid() {
         ))}
       </div>
 
-      {/* Wide Grid — auto-scrolling marquee */}
-      <div className="relative w-full overflow-hidden flex flex-col">
-        <div className="flex w-max gap-6 marquee-track" style={{ '--marquee-duration': '50s' } as React.CSSProperties}>
-          {[...selectedWork.wide, ...selectedWork.wide].map((src, i) => (
-            <div
-              key={`wide-${i}`}
-              className="relative aspect-[380/260] h-[200px] sm:h-[260px] shrink-0 overflow-hidden rounded-[12px] bg-cream shadow-sm"
-            >
-              <SmartImage src={src} alt="" fill sizes="(min-width: 640px) 380px, 290px" className="object-cover" />
-            </div>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
