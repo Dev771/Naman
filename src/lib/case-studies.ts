@@ -92,6 +92,7 @@ export const caseStudies: CaseStudy[] = [
     id: 'nomad',
     slug: 'nomad',
     href: '/work/nomad',
+    comingSoon: true,
     cardTitle: 'The student financing solution',
     cardMeta: 'Nomadcredit | 2025–2026',
     cardImage: C('image/upload/v1777222158/Nomadcredit_yufy2w.png'),
