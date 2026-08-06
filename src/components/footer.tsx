@@ -90,24 +90,24 @@ export function Footer() {
     >
       {/* Decorative Waves */}
       <div className="absolute bottom-0 left-0 right-0 w-full h-[200px] md:h-[280px] pointer-events-none opacity-90">
-        <svg 
-          className="absolute bottom-0 w-[200%] md:w-full h-full object-cover md:object-fill" 
-          viewBox="0 0 1440 320" 
+        <svg
+          className="absolute bottom-0 w-[200%] md:w-full h-full object-cover md:object-fill"
+          viewBox="0 0 1440 320"
           preserveAspectRatio="none"
         >
-          <path 
-            fill="#1c3dc4" 
-            fillOpacity="0.6" 
+          <path
+            fill="#1c3dc4"
+            fillOpacity="0.6"
             d="M0,256L48,229.3C96,203,192,149,288,154.7C384,160,480,224,576,218.7C672,213,768,139,864,128C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
           />
         </svg>
-        <svg 
-          className="absolute bottom-0 w-[200%] md:w-full h-[140px] md:h-[220px] object-cover md:object-fill" 
-          viewBox="0 0 1440 320" 
+        <svg
+          className="absolute bottom-0 w-[200%] md:w-full h-[140px] md:h-[220px] object-cover md:object-fill"
+          viewBox="0 0 1440 320"
           preserveAspectRatio="none"
         >
-          <path 
-            fill="#0f2275" 
+          <path
+            fill="#0f2275"
             d="M0,128L60,149.3C120,171,240,213,360,208C480,203,600,149,720,144C840,139,960,181,1080,192C1200,203,1320,181,1380,170.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
           />
         </svg>
@@ -139,12 +139,14 @@ export function Footer() {
                     unoptimized
                   />
                 </div>
-                <div className="text-[#fffefc] text-[16px] flex flex-wrap items-center gap-[20px] font-normal leading-[14.4px] mt-1">
-                  <span className="font-['Inter']">Made by official DIET Coke paguls 💅</span>
-                  <div className="flex gap-[4px] items-center">
-                    <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300 cursor-default">Dev G.</span>
-                    <span className="font-['Inter']">&</span>
-                    <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300 cursor-default">Naman B.</span>
+                <div className="text-[#fffefc] text-[14px] flex flex-col gap-[10px] font-normal leading-relaxed mt-3">
+                  <div className="flex flex-wrap items-center gap-[6px]">
+                    <span className="font-['Inter'] opacity-90">Managed & Developed by <b>Juncn Studio</b>,</span>
+                    <div className="flex gap-[4px] items-center">
+                      <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300 cursor-default">Dev G.</span>
+                      <span className="font-['Inter'] opacity-90">&</span>
+                      <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300 cursor-default">Naman B.</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -280,12 +282,14 @@ export function Footer() {
                   unoptimized
                 />
               </div>
-              <div className="text-[#fffefc] text-[16px] flex flex-col items-center gap-[20px] font-normal leading-[14.4px] mt-1 text-center">
-                <span className="font-['Inter']">Made by official DIET Coke paguls 💅</span>
-                <div className="flex gap-[4px] items-center">
-                  <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300">Dev G.</span>
-                  <span className="font-['Inter']">&</span>
-                  <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300">Naman B.</span>
+              <div className="text-[#fffefc] text-[14px] flex flex-col items-center gap-[10px] font-normal leading-relaxed mt-4 text-center">
+                <div className="flex flex-col items-center gap-[6px]">
+                  <span className="font-['Inter'] opacity-90">Managed & Developed by Juncn Studio,</span>
+                  <div className="flex gap-[4px] items-center">
+                    <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300">Dev G.</span>
+                    <span className="font-['Inter'] opacity-90">&</span>
+                    <span className="inline-block italic underline decoration-solid hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:-translate-y-[1px] transition-all duration-300">Naman B.</span>
+                  </div>
                 </div>
               </div>
             </div>
